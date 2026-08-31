@@ -1,0 +1,45 @@
+===== PAGE 1 =====
+CÔNG TY CỔ PHẦN GIẢ LẬP SYN
+
+BÁO CÁO TÀI CHÍNH HỢP NHẤT
+
+Tháng 1 năm 2021
+
+===== PAGE 2 =====
+CÔNG TY CỔ PHẦN GIẢ LẬP SYN
+
+BẢNG CÂN ĐỐI KẾ TOÁN HỢP NHẤT
+
+Tại ngày 31 tháng 12 năm 2020
+
+Đơn vị: VND
+
+<table><tr><td>TÀI SẢN</td><td>Mã số</td><td>Thuyết minh</td><td>31/12/2020</td><td>01/01/2020</td></tr><tr><td>A. TÀI SẢN NGẮN HẠN</td><td>100</td><td></td><td>1.000.000</td><td>900.000</td></tr><tr><td>I. Tiền và các khoản tương đương tiền</td><td>110</td><td>5.1</td><td>500.000</td><td>450.000</td></tr></table>
+
+Các thuyết minh là một bộ phận hợp thành của báo cáo tài chính hợp nhất
+
+2
+
+===== PAGE 3 =====
+CÔNG TY CỔ PHẦN GIẢ LẬP SYN
+
+BÁO CÁO TÌNH HÌNH TÀI CHÍNH HỢP NHẤT (mẫu ngân hàng, tiêu đề đa cấp)
+
+<table><tr><td rowspan="2" colspan="2"></td><td rowspan="2">Thuyết minh</td><td colspan="2">Tại ngày</td></tr><tr><td>31.12.2020 Triệu VND</td><td>31.12.2019 Triệu VND</td></tr><tr><td>A</td><td>TÀI SẢN</td><td></td><td></td><td></td></tr><tr><td>I</td><td>Tiền mặt</td><td>4</td><td>8.000</td><td>7.500</td></tr></table>
+
+3
+
+===== PAGE 4 =====
+CÔNG TY CỔ PHẦN GIẢ LẬP SYN
+
+THUYẾT MINH BÁO CÁO TÀI CHÍNH HỢP NHẤT
+
+5.1 Tiền và các khoản tương đương tiền
+
+<table><tr><td></td><td>31/12/2020VND</td><td>01/01/2020VND</td></tr><tr><td>Tiền mặt</td><td>100.000</td><td>90.000</td></tr><tr><td>Cộng</td><td>100.000</td><td>90.000</td></tr></table>
+
+Bảng bị lỗi cố ý (thẻ không đóng đúng) để kiểm tra xử lý lỗi:
+
+<table><tr><td>Cột A<td>Cột B</td></tr><tr><td>1</td><td>2</td></tr></table>
+
+4

@@ -1,0 +1,9 @@
+file,n_lines,n_chars,n_pages,n_table_tags,n_ocr_noise_runs,n_leaked_structure_tags
+AAA_financial_statements_2015_consolidated_extracted.txt,1686,118654,43,47,0,0
+ACB_financial_statements_2022_consolidated_extracted.txt,2992,278131,99,116,65,1
+VJC_financial_statements_2018_consolidated_extracted.txt,1505,120187,54,67,11,0
+SCR_financial_statements_2017_separate_extracted.txt,1367,123750,58,73,0,0
+VSC_financial_statements_2017_separate_extracted.txt,970,74733,36,41,1,0
+HT1_financial_statements_2019_consolidated_extracted.txt,1464,122136,50,61,0,0
+ACV_financial_statements_2022_aggregated_extracted.txt,1546,133605,58,60,0,0
+EVF_financial_statements_2018_extracted.txt,1780,151094,55,75,2,0

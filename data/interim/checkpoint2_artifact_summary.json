@@ -1,0 +1,14 @@
+{
+  "corpus_reports": 1973,
+  "normalized_tables": 146243,
+  "parse_warnings": 0,
+  "parse_failures": 0,
+  "shape_anomaly_flags": 57,
+  "shape_thresholds": {
+    "max_rows": 200,
+    "max_cols": 50
+  },
+  "structured_path": "data/processed/normalized_tables.jsonl",
+  "retrieval_catalog_path": "data/processed/normalized_tables.csv",
+  "anomaly_path": "data/interim/extraction_full_anomalies.csv"
+}

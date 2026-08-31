@@ -1,0 +1,18 @@
+{"id": 1, "expected_answer": 208253.201298, "expected_unit": "triệu đồng", "derivation": "VJC...|1179 row 1 col 1: 208253201298 VND / 1e6"}
+{"id": 2, "expected_answer": 72917566.0, "expected_unit": "triệu đồng", "derivation": "ACB...|1504 row 1 col 1; source header is Triệu VND"}
+{"id": 4, "expected_answer": 444.917590949, "expected_unit": "tỷ đồng", "derivation": "FTS...|414 row 24 col 3: 444917590949 VND / 1e9"}
+{"id": 5, "expected_answer": 5.535987434, "expected_unit": "tỷ đồng", "derivation": "SCR...|1251 row 1 col 1: 5535987434 VND / 1e9"}
+{"id": 6, "expected_answer": 145.731366146, "expected_unit": "tỷ đồng", "derivation": "VSC...|224 row 19 col 2: 145731366146 VND / 1e9"}
+{"id": 7, "expected_answer": 57.764463052, "expected_unit": "tỷ đồng", "derivation": "HT1...|292 row 11 col 3: 57764463052 VND / 1e9"}
+{"id": 9, "expected_answer": 2949.600088, "expected_unit": "triệu đồng", "derivation": "SAM...|230 row 15 col 3: 2949600088 VND / 1e6"}
+{"id": 13, "expected_answer": 1880.612291229, "expected_unit": "tỷ đồng", "derivation": "SAB...|240 row 2 col 3: 1880612291229 VND / 1e9"}
+{"id": 25, "expected_answer": 37.01562095, "expected_unit": "tỷ đồng", "derivation": "DIG...|1384 row 6 col 1: 37015620950 VND / 1e9"}
+{"id": 584, "expected_answer": -157.043593437, "expected_unit": "tỷ đồng", "derivation": "AAA...|279 row 19: (6079230359763-6236273953200)/1e9; signed 2025 minus 2024 development convention"}
+{"id": 598, "expected_answer": -95.56299171012267, "expected_unit": "%", "derivation": "HNG...|1226 row 15: (25682255-578819180)/578819180*100; source header Ngàn VND cancels in ratio"}
+{"id": 604, "expected_answer": 123.977414336, "expected_unit": "tỷ đồng", "derivation": "DLG...|472 row 12: (5355530683088-5231553268752)/1e9; signed 2019 minus 2018 convention"}
+{"id": 405, "expected_answer": 1.4485569610951583, "expected_unit": "%", "derivation": "Both 2023 and 2024 net revenue increased; asset turnover using average total assets is 0.259308 for 2023 vs 0.251377 for 2024, so choose 2023. ROE local convention = total LNST 2056061 / average total equity ((135655449+148221686)/2) * 100. All inputs are triệu VND."}
+{"id": 795, "expected_answer": 25.731282261, "expected_unit": "tỷ đồng", "derivation": "GAS...|272 row 17 col 4 minus POW...|862 row 6 col 1: (50699483380-24968201119)/1e9"}
+{"id": 627, "expected_answer": 27838.20263, "expected_unit": "triệu đồng", "derivation": "PVT_2018...|949 row 3 col 1 (41676677160) minus PVT_2016...|230 row 21 col 3 (13838474530); (41676677160-13838474530)/1e6; signed 2018 minus 2016 convention"}
+{"id": 591, "expected_answer": 26367833.0, "expected_unit": "triệu đồng", "derivation": "SSB_2022...|194 row 11 col 3 (153955992) minus SSB_2021...|204 row 12 col 3 (127588159); source unit already triệu VND, no scaling; signed 2022 minus 2021 convention"}
+{"id": 959, "expected_answer": 2020.0, "expected_unit": "year (not a currency value; argmax selector -- see verification_note)", "derivation": "max(45202279722550, 48034267483067, 49568303094429, 51430652051301) over 2016/2017/2018/2020 occurs at 2020; LOWER CONFIDENCE / BEST EFFORT, retrieval ground truth only, like Q405"}
+{"id": 961, "expected_answer": 1721.356683254, "expected_unit": "tỷ đồng", "derivation": "max(988720909873, 730673889982, 1508776640729, 1721356683254)/1e9 over 2020/2022/2024/2025 occurs at 2025"}
