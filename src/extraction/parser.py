@@ -43,6 +43,18 @@ _SECTION_PATTERNS = [
     ("notes", re.compile(r"THUYẾT MINH", re.IGNORECASE)),
 ]
 
+# An explicit "Đơn vị (tính): <currency>" declaration line. Vietnamese BCTC reports state this
+# once per statement/section, not once per table, so it must be tracked as running state across
+# the file (see TableCandidate.preceding_unit_declaration) rather than looked up locally per
+# table. Anchored on the "Đơn vị" keyword -- unlike detected_units' bare currency-word matching,
+# this deliberately does not fire on ordinary prose that happens to mention "đồng"/"VND".
+_UNIT_DECLARATION_RE = re.compile(
+    r"đơn\s*vị\s*(t[íi]nh)?\s*[:\-]?\s*"
+    r"(nghìn\s*tỷ\s*đồng|nghìn\s*tỷ\s*VND|tỷ\s*đồng|tỷ\s*VND|triệu\s*đồng|triệu\s*VND|"
+    r"nghìn\s*đồng|nghìn\s*VND|VND)",
+    re.IGNORECASE,
+)
+
 
 def classify_section_header(text: Optional[str]) -> str:
     if not text:
@@ -137,6 +149,11 @@ class TableCandidate:
     page: Optional[int]
     section_header: str  # diagnostic only, see classify_section_header
     caption_context: list[str]  # up to 3 non-empty lines immediately preceding the table
+    # Raw text of the nearest preceding explicit "Đơn vị (tính): <currency>" line anywhere
+    # earlier in the file (not bounded to 3 lines or a page break, unlike caption_context) --
+    # Vietnamese BCTC reports state this once per statement, not once per table. None if no such
+    # declaration has appeared yet. Verbatim source text only; normalization decides the scale.
+    preceding_unit_declaration: Optional[str]
     status: str  # "success" | "parsed_with_warnings" | "failed"
     warnings: list[str]
     n_rows: int
@@ -176,6 +193,7 @@ def extract_tables_from_file(
     results: list[TableCandidate] = []
     current_page: Optional[int] = None
     current_section: Optional[str] = None
+    current_unit_declaration: Optional[str] = None
 
     for i, line in enumerate(lines):
         stripped = line.strip()
@@ -185,6 +203,8 @@ def extract_tables_from_file(
             continue
 
         if "<table>" not in stripped:
+            if _UNIT_DECLARATION_RE.search(stripped):
+                current_unit_declaration = stripped
             for label, pat in _SECTION_PATTERNS:
                 if pat.search(stripped):
                     current_section = stripped
@@ -227,6 +247,7 @@ def extract_tables_from_file(
                     page=current_page,
                     section_header=classify_section_header(current_section),
                     caption_context=caption_context,
+                    preceding_unit_declaration=current_unit_declaration,
                     status=status,
                     warnings=warnings,
                     n_rows=len(grid),

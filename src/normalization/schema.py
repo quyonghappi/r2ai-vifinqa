@@ -183,8 +183,16 @@ def infer_period_labels(grid: list[list[str]], header_scan_rows: int = 6) -> lis
     return labels
 
 
-def infer_column_metadata(grid: list[list[str]], header_scan_rows: int = 6) -> list[dict]:
-    """Record source-unit and period evidence per numeric column, not per table."""
+def infer_column_metadata(
+    grid: list[list[str]], header_scan_rows: int = 6, fallback_unit_text: str | None = None
+) -> list[dict]:
+    """Record source-unit and period evidence per numeric column, not per table.
+
+    `fallback_unit_text` is the nearest preceding explicit unit declaration threaded from
+    extraction (TableCandidate.preceding_unit_declaration); used only when the column's own
+    header carries no unit, and only if it resolves via unit_scale_to_vnd -- never invented.
+    """
+    fallback_unit = next(iter(detect_units(fallback_unit_text)), None) if fallback_unit_text else None
     n_cols = max((len(row) for row in grid), default=0)
     columns = []
     for column_index in range(n_cols):
@@ -195,7 +203,7 @@ def infer_column_metadata(grid: list[list[str]], header_scan_rows: int = 6) -> l
         ]
         header_path = " | ".join(dict.fromkeys(header_cells))
         units = detect_units(header_path)
-        unit = units[0] if units else None
+        unit = units[0] if units else fallback_unit
         columns.append({
             "column_index": column_index,
             "header_path": header_path,
@@ -330,8 +338,14 @@ def normalize_candidate(
     searchable_text = " ".join(cells)
     table_identity = " | ".join(candidate.caption_context + [candidate.section_header])
     detected_units = detect_units(searchable_text + " " + " ".join(candidate.caption_context))
+    if not detected_units and candidate.preceding_unit_declaration:
+        # The table's own text and immediate caption carry no unit -- Vietnamese BCTC reports
+        # state it once per statement, not once per table (see extraction/parser.py's
+        # preceding_unit_declaration; AGENTS.md Section 4 -- this is threaded structural fact,
+        # not an invented value).
+        detected_units = detect_units(candidate.preceding_unit_declaration)
     period_labels = infer_period_labels(candidate.grid)
-    column_metadata = infer_column_metadata(candidate.grid)
+    column_metadata = infer_column_metadata(candidate.grid, fallback_unit_text=candidate.preceding_unit_declaration)
     row_labels = infer_row_labels(candidate.grid)
     return NormalizedTable(
         report_id=candidate.report_id,

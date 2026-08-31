@@ -56,11 +56,18 @@ def validate(
     *,
     abs_tol: float = 1e-9,
     rel_tol: float = 1e-9,
+    allow_partial: bool = False,
 ) -> dict:
     """Validate coverage, schema, paths, and independent query execution.
 
     The tolerances check internal answer/query consistency only; they are not a claim about the
     unpublished official answer-scoring tolerance.
+
+    `allow_partial=False` (default) keeps missing official ids as a validation error -- the
+    strict, catch-bugs-early gate. `allow_partial=True` reports them under `missing_ids`
+    instead of failing `valid` on coverage alone (see build()'s `allow_partial` docstring and
+    CHANGE_LOG.md 2026-08-31 partial-submission entry for why this is still within the official
+    contract); every record that *is* present is still fully validated either way.
     """
     package_dir = (package_dir or submission_path.parent).resolve()
     data_root = (package_dir / "data").resolve()
@@ -150,12 +157,14 @@ def validate(
             errors.append(f"{prefix}: {type(exc).__name__}: {exc}")
 
     missing_ids = sorted(set(official_by_id) - seen)
-    if missing_ids:
+    if missing_ids and not allow_partial:
         errors.append(f"missing official ids ({len(missing_ids)}): {missing_ids[:20]}")
     report = {
         "valid": not errors, "n_official": len(official), "n_records": len(records),
         "abs_tolerance_internal": abs_tol, "rel_tolerance_internal": rel_tol, "errors": errors,
     }
+    if allow_partial:
+        report["missing_ids"] = missing_ids
     return report
 
 
@@ -164,8 +173,10 @@ def main() -> None:
     parser.add_argument("submission", type=Path, nargs="?", default=Path("submission/package/submission.json"))
     parser.add_argument("--questions", type=Path, default=Path("data/raw/hf_meta/questions.jsonl"))
     parser.add_argument("--package-dir", type=Path)
+    parser.add_argument("--allow-partial", action="store_true",
+                         help="don't fail validation solely for missing official ids (see validate()'s docstring)")
     args = parser.parse_args()
-    report = validate(args.submission, args.questions, args.package_dir)
+    report = validate(args.submission, args.questions, args.package_dir, allow_partial=args.allow_partial)
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if not report["valid"]:
         raise SystemExit(1)
