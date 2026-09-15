@@ -1,0 +1,62 @@
+{
+  "n_oracle_questions_total": 35,
+  "n_oracle_questions_zero_gold_skipped": 1,
+  "n_oracle_questions_scored": 34,
+  "candidate_ks": [
+    5,
+    8,
+    10,
+    12,
+    15,
+    20
+  ],
+  "results": {
+    "used_tables(current_production)": {
+      "macro_precision": 0.6470588235294118,
+      "macro_recall": 0.11580000555021155,
+      "macro_f2": 0.130017526426876
+    },
+    "all_retrieved": {
+      "macro_precision": 0.27783862771114637,
+      "macro_recall": 0.4199531744189138,
+      "macro_f2": 0.29016258006786844
+    },
+    "all_linked(<=120cap)": {
+      "macro_precision": 0.3159282765080889,
+      "macro_recall": 0.4162767038306785,
+      "macro_f2": 0.3026721603027024
+    },
+    "top5_tables": {
+      "macro_precision": 0.5176470588235295,
+      "macro_recall": 0.30667062410654444,
+      "macro_f2": 0.27952451871475664
+    },
+    "top8_tables": {
+      "macro_precision": 0.43014705882352944,
+      "macro_recall": 0.36110640252569554,
+      "macro_f2": 0.3027650268974534
+    },
+    "top10_tables": {
+      "macro_precision": 0.38823529411764707,
+      "macro_recall": 0.377711277185185,
+      "macro_f2": 0.3024532576350114
+    },
+    "top12_tables": {
+      "macro_precision": 0.3638591800356506,
+      "macro_recall": 0.3919960670924541,
+      "macro_f2": 0.3019033118550578
+    },
+    "top15_tables": {
+      "macro_precision": 0.33017570664629486,
+      "macro_recall": 0.41184723519646105,
+      "macro_f2": 0.30328119817700594
+    },
+    "top20_tables": {
+      "macro_precision": 0.3159282765080889,
+      "macro_recall": 0.4162767038306785,
+      "macro_f2": 0.3026721603027024
+    }
+  },
+  "selected_k": 8,
+  "selection_rule": "smallest K reaching the macro-F2 plateau, same rule as retrieval.full_corpus.ROW_LABEL_RERANK_WEIGHT's calibration"
+}

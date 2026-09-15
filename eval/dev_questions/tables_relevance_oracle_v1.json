@@ -1,0 +1,1652 @@
+[
+  {
+    "id": 276,
+    "question": "Số dư vay ngắn hạn của HT1 cuối năm 2020 là bao nhiêu trăm tỷ đồng?",
+    "query_family": "direct_lookup",
+    "search_tickers": [
+      "HT1"
+    ],
+    "search_keywords": [
+      "vay ngắn hạn",
+      "vay và nợ thuê tài chính ngắn hạn"
+    ],
+    "search_years": [
+      "2020"
+    ],
+    "gold_tables": [
+      "HT1_financial_statements_2020_consolidated|1009",
+      "HT1_financial_statements_2020_consolidated|1013",
+      "HT1_financial_statements_2020_consolidated|257",
+      "HT1_financial_statements_2020_separate|279",
+      "HT1_financial_statements_2020_separate|954",
+      "HT1_financial_statements_2020_separate|958"
+    ],
+    "gold_n": 6
+  },
+  {
+    "id": 215,
+    "question": "Chứng chỉ tiền gửi của Ngân hàng TMCP Đầu tư và Phát triển Việt Nam vào cuối năm 2016 là bao nhiêu triệu đồng?",
+    "query_family": "direct_lookup",
+    "search_tickers": [
+      "BID"
+    ],
+    "search_keywords": [
+      "chứng chỉ tiền gửi"
+    ],
+    "search_years": [
+      "2016"
+    ],
+    "gold_tables": [
+      "BID_financial_statements_2016_consolidated|1250",
+      "BID_financial_statements_2016_separate|1231"
+    ],
+    "gold_n": 2
+  },
+  {
+    "id": 115,
+    "question": "Tổng chi phí hoạt động của công ty mẹ Ngân hàng TMCP Công Thương Việt Nam năm 2019 là bao nhiêu triệu đồng?",
+    "query_family": "direct_lookup",
+    "search_tickers": [
+      "CTG"
+    ],
+    "search_keywords": [
+      "chi phí hoạt động"
+    ],
+    "search_years": [
+      "2019"
+    ],
+    "gold_tables": [
+      "CTG_financial_statements_2019_consolidated|1687",
+      "CTG_financial_statements_2019_consolidated|2383",
+      "CTG_financial_statements_2019_consolidated|266",
+      "CTG_financial_statements_2019_separate|1520",
+      "CTG_financial_statements_2019_separate|1537",
+      "CTG_financial_statements_2019_separate|2246",
+      "CTG_financial_statements_2019_separate|331"
+    ],
+    "gold_n": 7
+  },
+  {
+    "id": 231,
+    "question": "Tổng lợi nhuận kế toán trước thuế năm 2023 của công ty mẹ CTCP Địa ốc Sài Gòn Thương Tín (SCR) là bao nhiêu tỷ đồng?",
+    "query_family": "direct_lookup",
+    "search_tickers": [
+      "SCR"
+    ],
+    "search_keywords": [
+      "lợi nhuận kế toán trước thuế",
+      "tổng lợi nhuận trước thuế"
+    ],
+    "search_years": [
+      "2023"
+    ],
+    "gold_tables": [
+      "SCR_financial_statements_2023_consolidated|1398",
+      "SCR_financial_statements_2023_consolidated|265",
+      "SCR_financial_statements_2023_consolidated|306",
+      "SCR_financial_statements_2023_separate|1246",
+      "SCR_financial_statements_2023_separate|263",
+      "SCR_financial_statements_2023_separate|291"
+    ],
+    "gold_n": 6
+  },
+  {
+    "id": 539,
+    "question": "Trong năm 2019, trong số CTCP Lọc hóa dầu Bình Sơn, Tập đoàn Xăng dầu Việt Nam và Tổng CTCP Vận tải Dầu khí, công ty có tỷ lệ nợ phải trả trên vốn chủ sở hữu cao nhất có tỷ lệ giữa tổng lợi nhuận kế toán trước thuế cộng chi phí lãi vay và chi phí lãi vay là bao nhiêu lần?",
+    "query_family": "ratio_or_derived",
+    "search_tickers": [
+      "BSR",
+      "PLX",
+      "PVT"
+    ],
+    "search_keywords": [
+      "nợ phải trả",
+      "vốn chủ sở hữu",
+      "lợi nhuận kế toán trước thuế",
+      "chi phí lãi vay"
+    ],
+    "search_years": [
+      "2019"
+    ],
+    "gold_tables": [
+      "BSR_financial_statements_2019_consolidated|250",
+      "BSR_financial_statements_2019_consolidated|990",
+      "BSR_financial_statements_2019_consolidated|994",
+      "BSR_financial_statements_2019_separate|294",
+      "BSR_financial_statements_2019_separate|337",
+      "PLX_financial_statements_2019_consolidated|1340",
+      "PLX_financial_statements_2019_consolidated|1559",
+      "PLX_financial_statements_2019_consolidated|1626",
+      "PLX_financial_statements_2019_consolidated|1758",
+      "PLX_financial_statements_2019_consolidated|244",
+      "PLX_financial_statements_2019_consolidated|277",
+      "PLX_financial_statements_2019_consolidated|329",
+      "PLX_financial_statements_2019_consolidated|890",
+      "PLX_financial_statements_2019_consolidated|924",
+      "PLX_financial_statements_2019_consolidated|941",
+      "PLX_financial_statements_2019_separate|1277",
+      "PLX_financial_statements_2019_separate|1329",
+      "PLX_financial_statements_2019_separate|1488",
+      "PLX_financial_statements_2019_separate|244",
+      "PLX_financial_statements_2019_separate|274",
+      "PLX_financial_statements_2019_separate|308",
+      "PVT_financial_statements_2019_consolidated|1083",
+      "PVT_financial_statements_2019_consolidated|1234",
+      "PVT_financial_statements_2019_consolidated|1317",
+      "PVT_financial_statements_2019_consolidated|1414",
+      "PVT_financial_statements_2019_consolidated|319",
+      "PVT_financial_statements_2019_consolidated|375",
+      "PVT_financial_statements_2019_separate|1099",
+      "PVT_financial_statements_2019_separate|1249",
+      "PVT_financial_statements_2019_separate|1422",
+      "PVT_financial_statements_2019_separate|213",
+      "PVT_financial_statements_2019_separate|254",
+      "PVT_financial_statements_2019_separate|294"
+    ],
+    "gold_n": 33
+  },
+  {
+    "id": 629,
+    "question": "Tỷ lệ biến động số dư dự phòng phải thu ngắn hạn khó đòi giữa hai kỳ tài chính của công ty mẹ HBC giữa năm 2016 và năm 2020 là bao nhiêu %?",
+    "query_family": "ratio_or_derived",
+    "search_tickers": [
+      "HBC"
+    ],
+    "search_keywords": [
+      "dự phòng phải thu ngắn hạn khó đòi"
+    ],
+    "search_years": [
+      "2016",
+      "2020"
+    ],
+    "gold_tables": [
+      "HBC_financial_statements_2016_consolidated|1021",
+      "HBC_financial_statements_2016_consolidated|1053",
+      "HBC_financial_statements_2016_consolidated|1074",
+      "HBC_financial_statements_2016_consolidated|170",
+      "HBC_financial_statements_2016_separate|190",
+      "HBC_financial_statements_2016_separate|766",
+      "HBC_financial_statements_2016_separate|793",
+      "HBC_financial_statements_2016_separate|814",
+      "HBC_financial_statements_2020_consolidated|1049",
+      "HBC_financial_statements_2020_consolidated|208",
+      "HBC_financial_statements_2020_separate|1274",
+      "HBC_financial_statements_2020_separate|208",
+      "HBC_financial_statements_2020_separate|762"
+    ],
+    "gold_n": 13
+  },
+  {
+    "id": 547,
+    "question": "Trong các công ty AAA, DCM, DPM, GVR và PRT có lưu chuyển tiền thuần từ hoạt động kinh doanh dương trong cả ba năm 2020, 2021 và 2022, tỷ lệ lợi nhuận sau thuế trên doanh thu thuần cao nhất năm 2022 là bao nhiêu %?",
+    "query_family": "ratio_or_derived",
+    "search_tickers": [
+      "AAA",
+      "DCM",
+      "DPM",
+      "GVR",
+      "PRT"
+    ],
+    "search_keywords": [
+      "lưu chuyển tiền thuần từ hoạt động kinh doanh",
+      "lợi nhuận sau thuế",
+      "doanh thu thuần"
+    ],
+    "search_years": [
+      "2020",
+      "2021",
+      "2022"
+    ],
+    "gold_tables": [
+      "AAA_financial_statements_2020_consolidated|1613",
+      "AAA_financial_statements_2020_consolidated|1890",
+      "AAA_financial_statements_2020_consolidated|1941",
+      "AAA_financial_statements_2020_consolidated|220",
+      "AAA_financial_statements_2020_consolidated|248",
+      "AAA_financial_statements_2020_consolidated|286",
+      "AAA_financial_statements_2020_separate|1144",
+      "AAA_financial_statements_2020_separate|211",
+      "AAA_financial_statements_2020_separate|242",
+      "AAA_financial_statements_2020_separate|273",
+      "AAA_financial_statements_2021_consolidated|1617",
+      "AAA_financial_statements_2021_consolidated|1936",
+      "AAA_financial_statements_2021_consolidated|1985",
+      "AAA_financial_statements_2021_consolidated|266",
+      "AAA_financial_statements_2021_consolidated|291",
+      "AAA_financial_statements_2021_consolidated|329",
+      "AAA_financial_statements_2021_separate|1240",
+      "AAA_financial_statements_2021_separate|241",
+      "AAA_financial_statements_2021_separate|268",
+      "AAA_financial_statements_2022_consolidated|2258",
+      "AAA_financial_statements_2022_consolidated|2262",
+      "AAA_financial_statements_2022_consolidated|232",
+      "AAA_financial_statements_2022_consolidated|253",
+      "AAA_financial_statements_2022_consolidated|2588",
+      "AAA_financial_statements_2022_consolidated|2636",
+      "AAA_financial_statements_2022_consolidated|293",
+      "AAA_financial_statements_2022_separate|1226",
+      "AAA_financial_statements_2022_separate|266",
+      "AAA_financial_statements_2022_separate|293",
+      "DCM_financial_statements_2020_consolidated|102",
+      "DCM_financial_statements_2020_consolidated|1313",
+      "DCM_financial_statements_2020_consolidated|1368",
+      "DCM_financial_statements_2020_consolidated|1412",
+      "DCM_financial_statements_2020_consolidated|1414",
+      "DCM_financial_statements_2020_consolidated|422",
+      "DCM_financial_statements_2020_consolidated|470",
+      "DCM_financial_statements_2020_consolidated|523",
+      "DCM_financial_statements_2020_separate|104",
+      "DCM_financial_statements_2020_separate|1274",
+      "DCM_financial_statements_2020_separate|385",
+      "DCM_financial_statements_2020_separate|416",
+      "DCM_financial_statements_2020_separate|452",
+      "DCM_financial_statements_2021_consolidated|104",
+      "DCM_financial_statements_2021_consolidated|1465",
+      "DCM_financial_statements_2021_consolidated|1578",
+      "DCM_financial_statements_2021_consolidated|1596",
+      "DCM_financial_statements_2021_consolidated|465",
+      "DCM_financial_statements_2021_consolidated|482",
+      "DCM_financial_statements_2021_consolidated|501",
+      "DCM_financial_statements_2021_separate|104",
+      "DCM_financial_statements_2021_separate|1374",
+      "DCM_financial_statements_2021_separate|1493",
+      "DCM_financial_statements_2021_separate|1508",
+      "DCM_financial_statements_2021_separate|416",
+      "DCM_financial_statements_2021_separate|436",
+      "DCM_financial_statements_2021_separate|454",
+      "DCM_financial_statements_2022_consolidated|107",
+      "DCM_financial_statements_2022_consolidated|1174",
+      "DCM_financial_statements_2022_consolidated|1205",
+      "DCM_financial_statements_2022_consolidated|401",
+      "DCM_financial_statements_2022_consolidated|443",
+      "DCM_financial_statements_2022_consolidated|483",
+      "DCM_financial_statements_2022_separate|107",
+      "DCM_financial_statements_2022_separate|1128",
+      "DCM_financial_statements_2022_separate|1130",
+      "DCM_financial_statements_2022_separate|397",
+      "DCM_financial_statements_2022_separate|432",
+      "DCM_financial_statements_2022_separate|472",
+      "DPM_financial_statements_2020_consolidated|1215",
+      "DPM_financial_statements_2020_consolidated|322",
+      "DPM_financial_statements_2020_consolidated|351",
+      "DPM_financial_statements_2020_consolidated|384",
+      "DPM_financial_statements_2020_separate|1351",
+      "DPM_financial_statements_2020_separate|294",
+      "DPM_financial_statements_2020_separate|412",
+      "DPM_financial_statements_2020_separate|460",
+      "DPM_financial_statements_2021_consolidated|1339",
+      "DPM_financial_statements_2021_consolidated|446",
+      "DPM_financial_statements_2021_consolidated|475",
+      "DPM_financial_statements_2021_consolidated|504",
+      "DPM_financial_statements_2021_separate|1520",
+      "DPM_financial_statements_2021_separate|534",
+      "DPM_financial_statements_2021_separate|650",
+      "DPM_financial_statements_2021_separate|688",
+      "DPM_financial_statements_2022_consolidated|1918",
+      "DPM_financial_statements_2022_consolidated|1982",
+      "DPM_financial_statements_2022_consolidated|1986",
+      "DPM_financial_statements_2022_consolidated|494",
+      "DPM_financial_statements_2022_consolidated|552",
+      "DPM_financial_statements_2022_consolidated|587",
+      "DPM_financial_statements_2022_separate|1237",
+      "DPM_financial_statements_2022_separate|1241",
+      "DPM_financial_statements_2022_separate|1256",
+      "DPM_financial_statements_2022_separate|366",
+      "DPM_financial_statements_2022_separate|412",
+      "DPM_financial_statements_2022_separate|447",
+      "GVR_financial_statements_2020_consolidated|2009",
+      "GVR_financial_statements_2020_consolidated|2206",
+      "GVR_financial_statements_2020_consolidated|309",
+      "GVR_financial_statements_2020_consolidated|344",
+      "GVR_financial_statements_2020_consolidated|387",
+      "GVR_financial_statements_2020_separate|240",
+      "GVR_financial_statements_2020_separate|261",
+      "GVR_financial_statements_2020_separate|296",
+      "GVR_financial_statements_2021_consolidated|1850",
+      "GVR_financial_statements_2021_consolidated|2079",
+      "GVR_financial_statements_2021_consolidated|291",
+      "GVR_financial_statements_2021_consolidated|332",
+      "GVR_financial_statements_2021_consolidated|372",
+      "GVR_financial_statements_2022_consolidated|1947",
+      "GVR_financial_statements_2022_consolidated|2101",
+      "GVR_financial_statements_2022_consolidated|272",
+      "GVR_financial_statements_2022_consolidated|307",
+      "GVR_financial_statements_2022_consolidated|346",
+      "GVR_financial_statements_2022_separate|1217",
+      "GVR_financial_statements_2022_separate|201",
+      "GVR_financial_statements_2022_separate|229",
+      "GVR_financial_statements_2022_separate|259",
+      "PRT_financial_statements_2020_consolidated|1815",
+      "PRT_financial_statements_2020_consolidated|2116",
+      "PRT_financial_statements_2020_consolidated|220",
+      "PRT_financial_statements_2020_consolidated|251",
+      "PRT_financial_statements_2020_consolidated|282",
+      "PRT_financial_statements_2020_separate|229",
+      "PRT_financial_statements_2020_separate|258",
+      "PRT_financial_statements_2020_separate|294",
+      "PRT_financial_statements_2021_consolidated|1783",
+      "PRT_financial_statements_2021_consolidated|2084",
+      "PRT_financial_statements_2021_consolidated|223",
+      "PRT_financial_statements_2021_consolidated|258",
+      "PRT_financial_statements_2021_consolidated|295",
+      "PRT_financial_statements_2021_separate|228",
+      "PRT_financial_statements_2021_separate|257",
+      "PRT_financial_statements_2021_separate|288",
+      "PRT_financial_statements_2022_consolidated|1677",
+      "PRT_financial_statements_2022_consolidated|1994",
+      "PRT_financial_statements_2022_consolidated|253",
+      "PRT_financial_statements_2022_consolidated|282",
+      "PRT_financial_statements_2022_consolidated|313",
+      "PRT_financial_statements_2022_separate|262",
+      "PRT_financial_statements_2022_separate|302",
+      "PRT_financial_statements_2022_separate|344"
+    ],
+    "gold_n": 142
+  },
+  {
+    "id": 406,
+    "question": "Trong năm 2024, các doanh nghiệp ngành thực phẩm (bao gồm các công ty DBC, MSN, OGC) có lợi nhuận sau thuế dương và hệ số chuyển đổi lợi nhuận (CFO/LNST) lớn hơn 1 đạt tốc độ tăng trưởng tài sản dài hạn bình quân là bao nhiêu phần trăm so với năm 2023?",
+    "query_family": "growth",
+    "search_tickers": [
+      "DBC",
+      "MSN",
+      "OGC"
+    ],
+    "search_keywords": [
+      "lợi nhuận sau thuế",
+      "tài sản dài hạn",
+      "lưu chuyển tiền thuần từ hoạt động kinh doanh"
+    ],
+    "search_years": [
+      "2023",
+      "2024"
+    ],
+    "gold_tables": [
+      "DBC_financial_statements_2023_consolidated|1590",
+      "DBC_financial_statements_2023_consolidated|334",
+      "DBC_financial_statements_2023_consolidated|349",
+      "DBC_financial_statements_2023_consolidated|376",
+      "DBC_financial_statements_2023_consolidated|405",
+      "DBC_financial_statements_2023_separate|349",
+      "DBC_financial_statements_2023_separate|366",
+      "DBC_financial_statements_2023_separate|395",
+      "DBC_financial_statements_2023_separate|424",
+      "DBC_financial_statements_2024_consolidated|1597",
+      "DBC_financial_statements_2024_consolidated|314",
+      "DBC_financial_statements_2024_consolidated|329",
+      "DBC_financial_statements_2024_consolidated|358",
+      "DBC_financial_statements_2024_consolidated|387",
+      "DBC_financial_statements_2024_separate|323",
+      "DBC_financial_statements_2024_separate|338",
+      "DBC_financial_statements_2024_separate|365",
+      "DBC_financial_statements_2024_separate|392",
+      "MSN_financial_statements_2023_consolidated|1354",
+      "MSN_financial_statements_2023_consolidated|186",
+      "MSN_financial_statements_2023_consolidated|2179",
+      "MSN_financial_statements_2023_consolidated|2183",
+      "MSN_financial_statements_2023_consolidated|227",
+      "MSN_financial_statements_2023_consolidated|282",
+      "MSN_financial_statements_2023_separate|174",
+      "MSN_financial_statements_2023_separate|192",
+      "MSN_financial_statements_2023_separate|222",
+      "MSN_financial_statements_2024_consolidated|1751",
+      "MSN_financial_statements_2024_consolidated|1766",
+      "MSN_financial_statements_2024_consolidated|179",
+      "MSN_financial_statements_2024_consolidated|207",
+      "MSN_financial_statements_2024_consolidated|2175",
+      "MSN_financial_statements_2024_consolidated|2179",
+      "MSN_financial_statements_2024_consolidated|260",
+      "MSN_financial_statements_2024_separate|153",
+      "MSN_financial_statements_2024_separate|171",
+      "MSN_financial_statements_2024_separate|205",
+      "OGC_financial_statements_2018_consolidated|2023",
+      "OGC_financial_statements_2023_consolidated|1555",
+      "OGC_financial_statements_2023_consolidated|1664",
+      "OGC_financial_statements_2023_consolidated|305",
+      "OGC_financial_statements_2023_consolidated|324",
+      "OGC_financial_statements_2023_consolidated|345",
+      "OGC_financial_statements_2023_separate|1204",
+      "OGC_financial_statements_2023_separate|286",
+      "OGC_financial_statements_2023_separate|299",
+      "OGC_financial_statements_2023_separate|320",
+      "OGC_financial_statements_2023_separate|349",
+      "OGC_financial_statements_2024_consolidated|2028",
+      "OGC_financial_statements_2024_consolidated|2059",
+      "OGC_financial_statements_2024_consolidated|339",
+      "OGC_financial_statements_2024_consolidated|372",
+      "OGC_financial_statements_2024_consolidated|413",
+      "OGC_financial_statements_2024_separate|354",
+      "OGC_financial_statements_2024_separate|393",
+      "OGC_financial_statements_2024_separate|439"
+    ],
+    "gold_n": 56
+  },
+  {
+    "id": 434,
+    "question": "Trong năm 2023, xét các doanh nghiệp bất động sản gồm các mã DIG, HPX, SNZ, SSH và VRE có hệ số khả năng thanh toán lãi vay trên 2 lần, chi phí lãi vay của doanh nghiệp có biên an toàn thấp nhất có thể tăng tối đa bao nhiêu phần trăm trước khi hệ số này giảm về đúng 2,0 lần?",
+    "query_family": "growth",
+    "search_tickers": [
+      "DIG",
+      "HPX",
+      "SNZ",
+      "SSH",
+      "VRE"
+    ],
+    "search_keywords": [
+      "chi phí lãi vay",
+      "hệ số khả năng thanh toán lãi vay"
+    ],
+    "search_years": [
+      "2023"
+    ],
+    "gold_tables": [
+      "DIG_financial_statements_2023_consolidated|1107",
+      "DIG_financial_statements_2023_consolidated|1403",
+      "DIG_financial_statements_2023_consolidated|379",
+      "DIG_financial_statements_2023_consolidated|398",
+      "DIG_financial_statements_2023_separate|1066",
+      "DIG_financial_statements_2023_separate|1319",
+      "DIG_financial_statements_2023_separate|373",
+      "DIG_financial_statements_2023_separate|400",
+      "HPX_financial_statements_2023_consolidated|1199",
+      "HPX_financial_statements_2023_consolidated|343",
+      "HPX_financial_statements_2023_separate|1207",
+      "HPX_financial_statements_2023_separate|1532",
+      "HPX_financial_statements_2023_separate|1536",
+      "HPX_financial_statements_2023_separate|334",
+      "HPX_financial_statements_2023_separate|367",
+      "SNZ_financial_statements_2023_consolidated|2058",
+      "SNZ_financial_statements_2023_consolidated|481",
+      "SNZ_financial_statements_2023_consolidated|506",
+      "SNZ_financial_statements_2023_separate|1412",
+      "SNZ_financial_statements_2023_separate|393",
+      "SNZ_financial_statements_2023_separate|420",
+      "SSH_financial_statements_2023_consolidated|1180",
+      "SSH_financial_statements_2023_consolidated|1407",
+      "SSH_financial_statements_2023_consolidated|313",
+      "SSH_financial_statements_2023_consolidated|348",
+      "SSH_financial_statements_2023_separate|277",
+      "SSH_financial_statements_2023_separate|311",
+      "VRE_financial_statements_2023_consolidated|1234",
+      "VRE_financial_statements_2023_consolidated|1523",
+      "VRE_financial_statements_2023_consolidated|313",
+      "VRE_financial_statements_2023_consolidated|347",
+      "VRE_financial_statements_2023_consolidated|920",
+      "VRE_financial_statements_2023_separate|1059",
+      "VRE_financial_statements_2023_separate|1300",
+      "VRE_financial_statements_2023_separate|307",
+      "VRE_financial_statements_2023_separate|326"
+    ],
+    "gold_n": 36
+  },
+  {
+    "id": 455,
+    "question": "Xét các doanh nghiệp có mã cổ phiếu HPG, HSG, MSR và NKG, trong nhóm có giá trị hàng tồn kho bình quân năm 2021 và 2022 chia cho giá vốn hàng bán năm 2022 rồi nhân 365 cao hơn mức trung vị của cả 4 doanh nghiệp, tại doanh nghiệp có mức giảm lớn nhất của giá trị này từ năm 2022 đến năm 2024, lợi nhuận gộp năm 2024 chiếm bao nhiêu phần trăm doanh thu thuần năm 2024?",
+    "query_family": "growth",
+    "search_tickers": [
+      "HPG",
+      "HSG",
+      "MSR",
+      "NKG"
+    ],
+    "search_keywords": [
+      "hàng tồn kho",
+      "giá vốn hàng bán",
+      "lợi nhuận gộp",
+      "doanh thu thuần"
+    ],
+    "search_years": [
+      "2021",
+      "2022",
+      "2024"
+    ],
+    "gold_tables": [
+      "HPG_financial_statements_2021_consolidated|1215",
+      "HPG_financial_statements_2021_consolidated|1238",
+      "HPG_financial_statements_2021_consolidated|150",
+      "HPG_financial_statements_2021_consolidated|1818",
+      "HPG_financial_statements_2021_consolidated|235",
+      "HPG_financial_statements_2021_consolidated|278",
+      "HPG_financial_statements_2021_separate|1109",
+      "HPG_financial_statements_2021_separate|1113",
+      "HPG_financial_statements_2021_separate|155",
+      "HPG_financial_statements_2021_separate|212",
+      "HPG_financial_statements_2021_separate|246",
+      "HPG_financial_statements_2022_consolidated|159",
+      "HPG_financial_statements_2022_consolidated|234",
+      "HPG_financial_statements_2022_consolidated|279",
+      "HPG_financial_statements_2022_consolidated|976",
+      "HPG_financial_statements_2022_consolidated|993",
+      "HPG_financial_statements_2022_separate|157",
+      "HPG_financial_statements_2022_separate|212",
+      "HPG_financial_statements_2022_separate|241",
+      "HPG_financial_statements_2022_separate|909",
+      "HPG_financial_statements_2022_separate|913",
+      "HPG_financial_statements_2024_consolidated|1518",
+      "HPG_financial_statements_2024_consolidated|157",
+      "HPG_financial_statements_2024_consolidated|239",
+      "HPG_financial_statements_2024_consolidated|280",
+      "HPG_financial_statements_2024_consolidated|914",
+      "HPG_financial_statements_2024_consolidated|930",
+      "HPG_financial_statements_2024_separate|156",
+      "HPG_financial_statements_2024_separate|216",
+      "HPG_financial_statements_2024_separate|240",
+      "HPG_financial_statements_2024_separate|902",
+      "HPG_financial_statements_2024_separate|906",
+      "HSG_financial_statements_2021_consolidated|1164",
+      "HSG_financial_statements_2021_consolidated|122",
+      "HSG_financial_statements_2021_consolidated|1333",
+      "HSG_financial_statements_2021_consolidated|1337",
+      "HSG_financial_statements_2021_consolidated|186",
+      "HSG_financial_statements_2021_consolidated|235",
+      "HSG_financial_statements_2021_consolidated|751",
+      "HSG_financial_statements_2021_separate|119",
+      "HSG_financial_statements_2021_separate|1402",
+      "HSG_financial_statements_2021_separate|1421",
+      "HSG_financial_statements_2021_separate|183",
+      "HSG_financial_statements_2021_separate|218",
+      "HSG_financial_statements_2022_consolidated|1206",
+      "HSG_financial_statements_2022_consolidated|1223",
+      "HSG_financial_statements_2022_consolidated|125",
+      "HSG_financial_statements_2022_consolidated|182",
+      "HSG_financial_statements_2022_consolidated|222",
+      "HSG_financial_statements_2022_consolidated|683",
+      "HSG_financial_statements_2022_separate|1187",
+      "HSG_financial_statements_2022_separate|1191",
+      "HSG_financial_statements_2022_separate|132",
+      "HSG_financial_statements_2022_separate|183",
+      "HSG_financial_statements_2022_separate|227",
+      "HSG_financial_statements_2022_separate|601",
+      "HSG_financial_statements_2024_consolidated|1083",
+      "HSG_financial_statements_2024_consolidated|1094",
+      "HSG_financial_statements_2024_consolidated|1212",
+      "HSG_financial_statements_2024_consolidated|138",
+      "HSG_financial_statements_2024_consolidated|175",
+      "HSG_financial_statements_2024_consolidated|200",
+      "HSG_financial_statements_2024_separate|1045",
+      "HSG_financial_statements_2024_separate|1056",
+      "HSG_financial_statements_2024_separate|144",
+      "HSG_financial_statements_2024_separate|186",
+      "HSG_financial_statements_2024_separate|213",
+      "MSR_financial_statements_2021_consolidated|1127",
+      "MSR_financial_statements_2021_consolidated|211",
+      "MSR_financial_statements_2021_consolidated|266",
+      "MSR_financial_statements_2021_consolidated|307",
+      "MSR_financial_statements_2022_consolidated|1198",
+      "MSR_financial_statements_2022_consolidated|1212",
+      "MSR_financial_statements_2022_consolidated|298",
+      "MSR_financial_statements_2022_consolidated|357",
+      "MSR_financial_statements_2022_consolidated|399",
+      "MSR_financial_statements_2024_consolidated|1161",
+      "MSR_financial_statements_2024_consolidated|1175",
+      "MSR_financial_statements_2024_consolidated|1207",
+      "MSR_financial_statements_2024_consolidated|1271",
+      "MSR_financial_statements_2024_consolidated|1683",
+      "MSR_financial_statements_2024_consolidated|1696",
+      "MSR_financial_statements_2024_consolidated|264",
+      "MSR_financial_statements_2024_consolidated|328",
+      "MSR_financial_statements_2024_consolidated|372",
+      "NKG_financial_statements_2021_consolidated|1048",
+      "NKG_financial_statements_2021_consolidated|155",
+      "NKG_financial_statements_2021_consolidated|194",
+      "NKG_financial_statements_2021_consolidated|213",
+      "NKG_financial_statements_2021_consolidated|964",
+      "NKG_financial_statements_2021_consolidated|975",
+      "NKG_financial_statements_2021_separate|160",
+      "NKG_financial_statements_2021_separate|209",
+      "NKG_financial_statements_2021_separate|234",
+      "NKG_financial_statements_2021_separate|972",
+      "NKG_financial_statements_2021_separate|983",
+      "NKG_financial_statements_2022_consolidated|1133",
+      "NKG_financial_statements_2022_consolidated|1137",
+      "NKG_financial_statements_2022_consolidated|1214",
+      "NKG_financial_statements_2022_consolidated|179",
+      "NKG_financial_statements_2022_consolidated|232",
+      "NKG_financial_statements_2022_consolidated|247",
+      "NKG_financial_statements_2022_separate|1091",
+      "NKG_financial_statements_2022_separate|1102",
+      "NKG_financial_statements_2022_separate|184",
+      "NKG_financial_statements_2022_separate|243",
+      "NKG_financial_statements_2022_separate|270",
+      "NKG_financial_statements_2024_consolidated|1304",
+      "NKG_financial_statements_2024_consolidated|1308",
+      "NKG_financial_statements_2024_consolidated|1398",
+      "NKG_financial_statements_2024_consolidated|173",
+      "NKG_financial_statements_2024_consolidated|274",
+      "NKG_financial_statements_2024_consolidated|301",
+      "NKG_financial_statements_2024_separate|1302",
+      "NKG_financial_statements_2024_separate|1306",
+      "NKG_financial_statements_2024_separate|1406",
+      "NKG_financial_statements_2024_separate|188",
+      "NKG_financial_statements_2024_separate|324",
+      "NKG_financial_statements_2024_separate|339"
+    ],
+    "gold_n": 119
+  },
+  {
+    "id": 578,
+    "question": "Tổng số dư trả trước cho người bán ngắn hạn của công ty mẹ CTCP Nông nghiệp BAF Việt Nam cuối năm 2025 trừ đi mức cuối năm 2022 là bao nhiêu tỷ đồng?",
+    "query_family": "aggregation",
+    "search_tickers": [
+      "BAF"
+    ],
+    "search_keywords": [
+      "trả trước cho người bán ngắn hạn"
+    ],
+    "search_years": [
+      "2025",
+      "2022"
+    ],
+    "gold_tables": [
+      "BAF_financial_statements_2022_consolidated|1501",
+      "BAF_financial_statements_2022_consolidated|237",
+      "BAF_financial_statements_2022_separate|1404",
+      "BAF_financial_statements_2022_separate|242",
+      "BAF_financial_statements_2025_consolidated|1716",
+      "BAF_financial_statements_2025_consolidated|244",
+      "BAF_financial_statements_2025_consolidated|974",
+      "BAF_financial_statements_2025_separate|240",
+      "BAF_financial_statements_2025_separate|821"
+    ],
+    "gold_n": 9
+  },
+  {
+    "id": 209,
+    "question": "Tổng số dư phải thu về cho vay dài hạn cuối năm 2021 của Công ty Cổ phần Tập đoàn Hòa Phát là bao nhiêu trăm tỷ đồng?",
+    "query_family": "aggregation",
+    "search_tickers": [
+      "HPG"
+    ],
+    "search_keywords": [
+      "phải thu về cho vay dài hạn"
+    ],
+    "search_years": [
+      "2021"
+    ],
+    "gold_tables": [
+      "HPG_financial_statements_2021_consolidated|169",
+      "HPG_financial_statements_2021_consolidated|2114",
+      "HPG_financial_statements_2021_consolidated|2164",
+      "HPG_financial_statements_2021_separate|172"
+    ],
+    "gold_n": 4
+  },
+  {
+    "id": 323,
+    "question": "Tổng cộng các khoản phải thu của công ty mẹ Công ty cổ phần chứng khoán SSI vào cuối năm 2016 là bao nhiêu tỷ đồng?",
+    "query_family": "aggregation",
+    "search_tickers": [
+      "SSI"
+    ],
+    "search_keywords": [
+      "tổng cộng các khoản phải thu",
+      "phải thu"
+    ],
+    "search_years": [
+      "2016"
+    ],
+    "gold_tables": [
+      "SSI_financial_statements_2016_consolidated|1419",
+      "SSI_financial_statements_2016_consolidated|1436",
+      "SSI_financial_statements_2016_consolidated|1949",
+      "SSI_financial_statements_2016_consolidated|1953",
+      "SSI_financial_statements_2016_consolidated|1978",
+      "SSI_financial_statements_2016_consolidated|199",
+      "SSI_financial_statements_2016_consolidated|2379",
+      "SSI_financial_statements_2016_consolidated|2416",
+      "SSI_financial_statements_2016_consolidated|2460",
+      "SSI_financial_statements_2016_consolidated|2522",
+      "SSI_financial_statements_2016_consolidated|298",
+      "SSI_financial_statements_2016_consolidated|352",
+      "SSI_financial_statements_2016_separate|1355",
+      "SSI_financial_statements_2016_separate|1372",
+      "SSI_financial_statements_2016_separate|179",
+      "SSI_financial_statements_2016_separate|1834",
+      "SSI_financial_statements_2016_separate|1838",
+      "SSI_financial_statements_2016_separate|1863",
+      "SSI_financial_statements_2016_separate|2238",
+      "SSI_financial_statements_2016_separate|284",
+      "SSI_financial_statements_2016_separate|338"
+    ],
+    "gold_n": 21
+  },
+  {
+    "id": 592,
+    "question": "Độ chênh lệch của chỉ tiêu số dư cuối năm dự phòng rủi ro cho vay khách hàng giữa năm 2024 và năm 2022 của Ngân hàng TMCP Đầu tư và Phát triển Việt Nam là bao nhiêu triệu đồng?",
+    "query_family": "comparison",
+    "search_tickers": [
+      "BID"
+    ],
+    "search_keywords": [
+      "dự phòng rủi ro cho vay khách hàng"
+    ],
+    "search_years": [
+      "2024",
+      "2022"
+    ],
+    "gold_tables": [
+      "BID_financial_statements_2022_consolidated|1300",
+      "BID_financial_statements_2022_consolidated|269",
+      "BID_financial_statements_2022_separate|274",
+      "BID_financial_statements_2024_consolidated|1597",
+      "BID_financial_statements_2024_consolidated|298",
+      "BID_financial_statements_2024_separate|323"
+    ],
+    "gold_n": 6
+  },
+  {
+    "id": 649,
+    "question": "Thay đổi số dư chi phí thuê trả trước dài hạn của CTCP Tập đoàn Hoa Sen vào ngày 30/9/2025 so với ngày 30/9/2021 là bao nhiêu đồng?",
+    "query_family": "comparison",
+    "search_tickers": [
+      "HSG"
+    ],
+    "search_keywords": [
+      "chi phí thuê trả trước dài hạn"
+    ],
+    "search_years": [
+      "2025",
+      "2021"
+    ],
+    "gold_tables": [],
+    "gold_n": 0
+  },
+  {
+    "id": 805,
+    "question": "Chênh lệch tổng phải thu ngắn hạn từ các bên liên quan tại thời điểm cuối năm 2018 giữa hai công ty mẹ Địa ốc Sài Gòn Thương Tín và Đầu tư Phát triển Xây dựng là bao nhiêu tỷ đồng?",
+    "query_family": "comparison",
+    "search_tickers": [
+      "DIG",
+      "SCR"
+    ],
+    "search_keywords": [
+      "phải thu ngắn hạn",
+      "bên liên quan"
+    ],
+    "search_years": [
+      "2018"
+    ],
+    "gold_tables": [
+      "DIG_financial_statements_2018_consolidated|1105",
+      "DIG_financial_statements_2018_consolidated|1415",
+      "DIG_financial_statements_2018_consolidated|1436",
+      "DIG_financial_statements_2018_consolidated|1455",
+      "DIG_financial_statements_2018_consolidated|1473",
+      "DIG_financial_statements_2018_consolidated|211",
+      "DIG_financial_statements_2018_consolidated|859",
+      "DIG_financial_statements_2018_consolidated|882",
+      "DIG_financial_statements_2018_consolidated|886",
+      "DIG_financial_statements_2018_consolidated|903",
+      "DIG_financial_statements_2018_separate|1017",
+      "DIG_financial_statements_2018_separate|1059",
+      "DIG_financial_statements_2018_separate|1292",
+      "DIG_financial_statements_2018_separate|1311",
+      "DIG_financial_statements_2018_separate|1330",
+      "DIG_financial_statements_2018_separate|1351",
+      "DIG_financial_statements_2018_separate|1372",
+      "DIG_financial_statements_2018_separate|206",
+      "DIG_financial_statements_2018_separate|715",
+      "DIG_financial_statements_2018_separate|736",
+      "DIG_financial_statements_2018_separate|740",
+      "DIG_financial_statements_2018_separate|757",
+      "SCR_financial_statements_2018_consolidated|1010",
+      "SCR_financial_statements_2018_consolidated|128",
+      "SCR_financial_statements_2018_consolidated|1340",
+      "SCR_financial_statements_2018_consolidated|1443",
+      "SCR_financial_statements_2018_consolidated|1879",
+      "SCR_financial_statements_2018_consolidated|987",
+      "SCR_financial_statements_2018_separate|1132",
+      "SCR_financial_statements_2018_separate|1225",
+      "SCR_financial_statements_2018_separate|142",
+      "SCR_financial_statements_2018_separate|1598",
+      "SCR_financial_statements_2018_separate|837",
+      "SCR_financial_statements_2018_separate|858"
+    ],
+    "gold_n": 34
+  },
+  {
+    "id": 798,
+    "question": "Chênh lệch giá trị còn lại của tài sản cố định hữu hình (BCTC riêng) tính đến ngày 31/12/2022 giữa HHV và VSC là bao nhiêu tỷ đồng?",
+    "query_family": "cross_company_comparison",
+    "search_tickers": [
+      "HHV",
+      "VSC"
+    ],
+    "search_keywords": [
+      "tài sản cố định hữu hình",
+      "giá trị còn lại"
+    ],
+    "search_years": [
+      "2022"
+    ],
+    "gold_tables": [
+      "HHV_financial_statements_2022_consolidated|1763",
+      "HHV_financial_statements_2022_consolidated|310",
+      "HHV_financial_statements_2022_separate|1513",
+      "HHV_financial_statements_2022_separate|1540",
+      "HHV_financial_statements_2022_separate|336",
+      "VSC_financial_statements_2022_consolidated|1541",
+      "VSC_financial_statements_2022_consolidated|1564",
+      "VSC_financial_statements_2022_consolidated|1617",
+      "VSC_financial_statements_2022_consolidated|297",
+      "VSC_financial_statements_2022_separate|220",
+      "VSC_financial_statements_2022_separate|905",
+      "VSC_financial_statements_2022_separate|929"
+    ],
+    "gold_n": 12
+  },
+  {
+    "id": 934,
+    "question": "Tổng doanh thu hoạt động tài chính của VGC năm 2018, PC1 năm 2018 và SJG trong kỳ từ 06/4/2018 đến 31/12/2018 là bao nhiêu tỷ đồng?",
+    "query_family": "cross_company_comparison",
+    "search_tickers": [
+      "SJG",
+      "VGC",
+      "PC1"
+    ],
+    "search_keywords": [
+      "doanh thu hoạt động tài chính"
+    ],
+    "search_years": [
+      "2018"
+    ],
+    "gold_tables": [
+      "PC1_financial_statements_2018_consolidated|1515",
+      "PC1_financial_statements_2018_consolidated|270",
+      "PC1_financial_statements_2018_separate|271",
+      "SJG_financial_statements_2018_aggregated|1700",
+      "SJG_financial_statements_2018_aggregated|275",
+      "SJG_financial_statements_2018_consolidated|1687",
+      "SJG_financial_statements_2018_consolidated|1833",
+      "SJG_financial_statements_2018_consolidated|294",
+      "VGC_financial_statements_2018_consolidated|1687",
+      "VGC_financial_statements_2018_consolidated|1971",
+      "VGC_financial_statements_2018_consolidated|249",
+      "VGC_financial_statements_2018_separate|1575",
+      "VGC_financial_statements_2018_separate|248"
+    ],
+    "gold_n": 13
+  },
+  {
+    "id": 263,
+    "question": "Giá trị hợp lý của tài sản tài chính loại FVTPL cuối năm 2019 của công ty mẹ SSI là bao nhiêu nghìn tỷ đồng?",
+    "query_family": "cross_company_comparison",
+    "search_tickers": [
+      "SSI"
+    ],
+    "search_keywords": [
+      "fvtpl"
+    ],
+    "search_years": [
+      "2019"
+    ],
+    "gold_tables": [
+      "SSI_financial_statements_2019_consolidated|1401",
+      "SSI_financial_statements_2019_consolidated|1551",
+      "SSI_financial_statements_2019_consolidated|1578",
+      "SSI_financial_statements_2019_consolidated|1726",
+      "SSI_financial_statements_2019_consolidated|1914",
+      "SSI_financial_statements_2019_consolidated|1969",
+      "SSI_financial_statements_2019_consolidated|2069",
+      "SSI_financial_statements_2019_consolidated|2092",
+      "SSI_financial_statements_2019_consolidated|248",
+      "SSI_financial_statements_2019_consolidated|357",
+      "SSI_financial_statements_2019_consolidated|415",
+      "SSI_financial_statements_2019_separate|1332",
+      "SSI_financial_statements_2019_separate|1452",
+      "SSI_financial_statements_2019_separate|1479",
+      "SSI_financial_statements_2019_separate|1781",
+      "SSI_financial_statements_2019_separate|1831",
+      "SSI_financial_statements_2019_separate|1931",
+      "SSI_financial_statements_2019_separate|1950",
+      "SSI_financial_statements_2019_separate|1956",
+      "SSI_financial_statements_2019_separate|237",
+      "SSI_financial_statements_2019_separate|344",
+      "SSI_financial_statements_2019_separate|402"
+    ],
+    "gold_n": 22
+  },
+  {
+    "id": 845,
+    "question": "Lãi cơ bản trên cổ phiếu (EPS) lớn nhất của Tập đoàn Bảo Việt (BVH) qua các năm tài chính 2017, 2019, 2022 và 2024 là bao nhiêu nghìn đồng/cổ phiếu?",
+    "query_family": "cross_company_comparison",
+    "search_tickers": [
+      "BVH"
+    ],
+    "search_keywords": [
+      "lãi cơ bản trên cổ phiếu",
+      "eps"
+    ],
+    "search_years": [
+      "2017",
+      "2019",
+      "2022",
+      "2024"
+    ],
+    "gold_tables": [
+      "BVH_financial_statements_2017_consolidated|2400",
+      "BVH_financial_statements_2017_consolidated|468",
+      "BVH_financial_statements_2019_consolidated|2155",
+      "BVH_financial_statements_2019_consolidated|306",
+      "BVH_financial_statements_2019_consolidated|3399",
+      "BVH_financial_statements_2022_consolidated|2255",
+      "BVH_financial_statements_2022_consolidated|3446",
+      "BVH_financial_statements_2022_consolidated|348",
+      "BVH_financial_statements_2024_consolidated|2229",
+      "BVH_financial_statements_2024_consolidated|317",
+      "BVH_financial_statements_2024_consolidated|3499"
+    ],
+    "gold_n": 11
+  },
+  {
+    "id": 144,
+    "question": "Số dư khoản mục Dự thu cổ tức, lợi nhuận được chia của công ty mẹ Tập đoàn Bảo Việt đến ngày 31 tháng 12 năm 2025 là bao nhiêu trăm tỷ đồng?",
+    "query_family": "direct_lookup",
+    "search_tickers": [
+      "BVH"
+    ],
+    "search_keywords": [
+      "dự thu cổ tức"
+    ],
+    "search_years": [
+      "2025"
+    ],
+    "gold_tables": [
+      "BVH_financial_statements_2025_separate|1115"
+    ],
+    "gold_n": 1
+  },
+  {
+    "id": 7,
+    "question": "Quỹ khen thưởng, phúc lợi của HT1 cuối năm 2019 là bao nhiêu tỷ đồng?",
+    "query_family": "direct_lookup",
+    "search_tickers": [
+      "HT1"
+    ],
+    "search_keywords": [
+      "quỹ khen thưởng"
+    ],
+    "search_years": [
+      "2019"
+    ],
+    "gold_tables": [
+      "HT1_financial_statements_2019_consolidated|1362",
+      "HT1_financial_statements_2019_consolidated|292",
+      "HT1_financial_statements_2019_separate|299"
+    ],
+    "gold_n": 3
+  },
+  {
+    "id": 876,
+    "question": "Trong các năm 2017, 2019, 2021 và 2022, năm nào ACV có chỉ tiêu Chi phí lãi vay lớn nhất?",
+    "query_family": "direct_lookup",
+    "search_tickers": [
+      "ACV"
+    ],
+    "search_keywords": [
+      "chi phí lãi vay"
+    ],
+    "search_years": [
+      "2017",
+      "2019",
+      "2021",
+      "2022"
+    ],
+    "gold_tables": [
+      "ACV_financial_statements_2017_consolidated|1171",
+      "ACV_financial_statements_2017_consolidated|1363",
+      "ACV_financial_statements_2017_consolidated|278",
+      "ACV_financial_statements_2017_consolidated|321",
+      "ACV_financial_statements_2017_separate|1134",
+      "ACV_financial_statements_2017_separate|1315",
+      "ACV_financial_statements_2017_separate|297",
+      "ACV_financial_statements_2017_separate|337",
+      "ACV_financial_statements_2019_consolidated|1130",
+      "ACV_financial_statements_2019_consolidated|1297",
+      "ACV_financial_statements_2019_consolidated|269",
+      "ACV_financial_statements_2019_consolidated|312",
+      "ACV_financial_statements_2019_separate|1128",
+      "ACV_financial_statements_2019_separate|1311",
+      "ACV_financial_statements_2019_separate|293",
+      "ACV_financial_statements_2019_separate|330",
+      "ACV_financial_statements_2021_consolidated|1196",
+      "ACV_financial_statements_2021_consolidated|1437",
+      "ACV_financial_statements_2021_consolidated|259",
+      "ACV_financial_statements_2021_separate|1131",
+      "ACV_financial_statements_2021_separate|1326",
+      "ACV_financial_statements_2021_separate|254",
+      "ACV_financial_statements_2022_aggregated|1135",
+      "ACV_financial_statements_2022_aggregated|1332",
+      "ACV_financial_statements_2022_aggregated|249",
+      "ACV_financial_statements_2022_aggregated|276",
+      "ACV_financial_statements_2022_consolidated|1113",
+      "ACV_financial_statements_2022_consolidated|1333",
+      "ACV_financial_statements_2022_consolidated|256"
+    ],
+    "gold_n": 29
+  },
+  {
+    "id": 286,
+    "question": "Lợi nhuận sau thuế chưa phân phối của Tổng Công ty Điện lực TKV - CTCP cuối năm 2015 là bao nhiêu tỷ đồng?",
+    "query_family": "direct_lookup",
+    "search_tickers": [
+      "DTK"
+    ],
+    "search_keywords": [
+      "lợi nhuận sau thuế chưa phân phối",
+      "lợi nhuận chưa phân phối"
+    ],
+    "search_years": [
+      "2015"
+    ],
+    "gold_tables": [
+      "DTK_financial_statements_2015_consolidated|289",
+      "DTK_financial_statements_2015_separate|317"
+    ],
+    "gold_n": 2
+  },
+  {
+    "id": 207,
+    "question": "Tiền mặt ngoại tệ của Ngân hàng TMCP Hàng hải Việt Nam (MSB) cuối năm 2024 là bao nhiêu triệu đồng?",
+    "query_family": "direct_lookup",
+    "search_tickers": [
+      "MSB"
+    ],
+    "search_keywords": [
+      "ngoại tệ"
+    ],
+    "search_years": [
+      "2024"
+    ],
+    "gold_tables": [
+      "MSB_financial_statements_2024_consolidated|1100",
+      "MSB_financial_statements_2024_consolidated|1104",
+      "MSB_financial_statements_2024_consolidated|1127",
+      "MSB_financial_statements_2024_consolidated|1133",
+      "MSB_financial_statements_2024_consolidated|1164",
+      "MSB_financial_statements_2024_consolidated|1437",
+      "MSB_financial_statements_2024_consolidated|1441",
+      "MSB_financial_statements_2024_consolidated|1458",
+      "MSB_financial_statements_2024_consolidated|1462",
+      "MSB_financial_statements_2024_consolidated|1601",
+      "MSB_financial_statements_2024_consolidated|1724",
+      "MSB_financial_statements_2024_consolidated|282",
+      "MSB_financial_statements_2024_consolidated|342",
+      "MSB_financial_statements_2024_separate|1118",
+      "MSB_financial_statements_2024_separate|1122",
+      "MSB_financial_statements_2024_separate|1132",
+      "MSB_financial_statements_2024_separate|1151",
+      "MSB_financial_statements_2024_separate|1190",
+      "MSB_financial_statements_2024_separate|1478",
+      "MSB_financial_statements_2024_separate|1482",
+      "MSB_financial_statements_2024_separate|1499",
+      "MSB_financial_statements_2024_separate|1503",
+      "MSB_financial_statements_2024_separate|1636",
+      "MSB_financial_statements_2024_separate|1753",
+      "MSB_financial_statements_2024_separate|274",
+      "MSB_financial_statements_2024_separate|338"
+    ],
+    "gold_n": 26
+  },
+  {
+    "id": 158,
+    "question": "Tỷ lệ sở hữu Công ty Cổ phần Cen Vĩnh Phúc của CRE tại năm 2021 là bao nhiêu phần trăm?",
+    "query_family": "ratio_or_derived",
+    "search_tickers": [
+      "CRE"
+    ],
+    "search_keywords": [
+      "cen vĩnh phúc"
+    ],
+    "search_years": [
+      "2021"
+    ],
+    "gold_tables": [
+      "CRE_financial_statements_2021_consolidated|351"
+    ],
+    "gold_n": 1
+  },
+  {
+    "id": 396,
+    "question": "Trong các doanh nghiệp ngành sản xuất thực phẩm (bao gồm các công ty ASM, DBC, MSN, OGC) có lưu chuyển tiền thuần từ hoạt động kinh doanh và lợi nhuận sau thuế năm 2024 đều dương, hệ số thanh toán nhanh tại ngày 31/12/2024 của doanh nghiệp có tỷ lệ dòng tiền kinh doanh trên lợi nhuận sau thuế lớn nhất là bao nhiêu lần?",
+    "query_family": "ratio_or_derived",
+    "search_tickers": [
+      "ASM",
+      "DBC",
+      "MSN",
+      "OGC"
+    ],
+    "search_keywords": [
+      "lưu chuyển tiền thuần từ hoạt động kinh doanh",
+      "lợi nhuận sau thuế",
+      "hàng tồn kho",
+      "nợ ngắn hạn"
+    ],
+    "search_years": [
+      "2024"
+    ],
+    "gold_tables": [
+      "ASM_financial_statements_2024_consolidated|1554",
+      "ASM_financial_statements_2024_consolidated|2459",
+      "ASM_financial_statements_2024_consolidated|2476",
+      "ASM_financial_statements_2024_consolidated|2564",
+      "ASM_financial_statements_2024_consolidated|2783",
+      "ASM_financial_statements_2024_consolidated|384",
+      "ASM_financial_statements_2024_consolidated|422",
+      "ASM_financial_statements_2024_consolidated|441",
+      "ASM_financial_statements_2024_consolidated|462",
+      "ASM_financial_statements_2024_consolidated|501",
+      "ASM_financial_statements_2024_separate|2110",
+      "ASM_financial_statements_2024_separate|2126",
+      "ASM_financial_statements_2024_separate|2298",
+      "ASM_financial_statements_2024_separate|2336",
+      "ASM_financial_statements_2024_separate|326",
+      "ASM_financial_statements_2024_separate|364",
+      "ASM_financial_statements_2024_separate|383",
+      "ASM_financial_statements_2024_separate|421",
+      "ASM_financial_statements_2024_separate|462",
+      "DBC_financial_statements_2024_consolidated|1413",
+      "DBC_financial_statements_2024_consolidated|1597",
+      "DBC_financial_statements_2024_consolidated|314",
+      "DBC_financial_statements_2024_consolidated|329",
+      "DBC_financial_statements_2024_consolidated|358",
+      "DBC_financial_statements_2024_consolidated|387",
+      "DBC_financial_statements_2024_separate|323",
+      "DBC_financial_statements_2024_separate|338",
+      "DBC_financial_statements_2024_separate|365",
+      "DBC_financial_statements_2024_separate|392",
+      "MSN_financial_statements_2024_consolidated|1329",
+      "MSN_financial_statements_2024_consolidated|1483",
+      "MSN_financial_statements_2024_consolidated|161",
+      "MSN_financial_statements_2024_consolidated|194",
+      "MSN_financial_statements_2024_consolidated|207",
+      "MSN_financial_statements_2024_consolidated|2135",
+      "MSN_financial_statements_2024_consolidated|260",
+      "MSN_financial_statements_2024_separate|171",
+      "MSN_financial_statements_2024_separate|205",
+      "OGC_financial_statements_2024_consolidated|2028",
+      "OGC_financial_statements_2024_consolidated|2059",
+      "OGC_financial_statements_2024_consolidated|316",
+      "OGC_financial_statements_2024_consolidated|339",
+      "OGC_financial_statements_2024_consolidated|372",
+      "OGC_financial_statements_2024_consolidated|413",
+      "OGC_financial_statements_2024_separate|1598",
+      "OGC_financial_statements_2024_separate|329",
+      "OGC_financial_statements_2024_separate|354",
+      "OGC_financial_statements_2024_separate|393",
+      "OGC_financial_statements_2024_separate|439"
+    ],
+    "gold_n": 49
+  },
+  {
+    "id": 598,
+    "question": "Tổng số dư phải trả người bán ngắn hạn với bên liên quan của công ty mẹ HNG từ cuối năm 2020 đến cuối năm 2021 thay đổi bao nhiêu phần trăm?",
+    "query_family": "growth",
+    "search_tickers": [
+      "HNG"
+    ],
+    "search_keywords": [
+      "phải trả người bán ngắn hạn",
+      "bên liên quan"
+    ],
+    "search_years": [
+      "2020",
+      "2021"
+    ],
+    "gold_tables": [
+      "HNG_financial_statements_2020_consolidated|1075",
+      "HNG_financial_statements_2020_consolidated|1102",
+      "HNG_financial_statements_2020_consolidated|1106",
+      "HNG_financial_statements_2020_consolidated|1263",
+      "HNG_financial_statements_2020_consolidated|1267",
+      "HNG_financial_statements_2020_consolidated|1292",
+      "HNG_financial_statements_2020_consolidated|1296",
+      "HNG_financial_statements_2020_consolidated|1315",
+      "HNG_financial_statements_2020_consolidated|1581",
+      "HNG_financial_statements_2020_consolidated|1689",
+      "HNG_financial_statements_2020_consolidated|1708",
+      "HNG_financial_statements_2020_consolidated|1725",
+      "HNG_financial_statements_2020_consolidated|1750",
+      "HNG_financial_statements_2020_consolidated|1769",
+      "HNG_financial_statements_2020_consolidated|1788",
+      "HNG_financial_statements_2020_consolidated|1807",
+      "HNG_financial_statements_2020_consolidated|321",
+      "HNG_financial_statements_2020_separate|1063",
+      "HNG_financial_statements_2020_separate|1080",
+      "HNG_financial_statements_2020_separate|1097",
+      "HNG_financial_statements_2020_separate|1114",
+      "HNG_financial_statements_2020_separate|1139",
+      "HNG_financial_statements_2020_separate|1160",
+      "HNG_financial_statements_2020_separate|1177",
+      "HNG_financial_statements_2020_separate|1198",
+      "HNG_financial_statements_2020_separate|1214",
+      "HNG_financial_statements_2020_separate|1230",
+      "HNG_financial_statements_2020_separate|1247",
+      "HNG_financial_statements_2020_separate|210",
+      "HNG_financial_statements_2020_separate|598",
+      "HNG_financial_statements_2020_separate|615",
+      "HNG_financial_statements_2020_separate|619",
+      "HNG_financial_statements_2020_separate|731",
+      "HNG_financial_statements_2020_separate|735",
+      "HNG_financial_statements_2020_separate|750",
+      "HNG_financial_statements_2020_separate|754",
+      "HNG_financial_statements_2020_separate|773",
+      "HNG_financial_statements_2020_separate|940",
+      "HNG_financial_statements_2020_separate|944",
+      "HNG_financial_statements_2021_consolidated|1118",
+      "HNG_financial_statements_2021_consolidated|1122",
+      "HNG_financial_statements_2021_consolidated|1147",
+      "HNG_financial_statements_2021_consolidated|1151",
+      "HNG_financial_statements_2021_consolidated|1170",
+      "HNG_financial_statements_2021_consolidated|1379",
+      "HNG_financial_statements_2021_consolidated|1482",
+      "HNG_financial_statements_2021_consolidated|1499",
+      "HNG_financial_statements_2021_consolidated|1518",
+      "HNG_financial_statements_2021_consolidated|1543",
+      "HNG_financial_statements_2021_consolidated|1560",
+      "HNG_financial_statements_2021_consolidated|1579",
+      "HNG_financial_statements_2021_consolidated|296",
+      "HNG_financial_statements_2021_consolidated|944",
+      "HNG_financial_statements_2021_consolidated|954",
+      "HNG_financial_statements_2021_consolidated|971",
+      "HNG_financial_statements_2021_separate|1089",
+      "HNG_financial_statements_2021_separate|1106",
+      "HNG_financial_statements_2021_separate|1125",
+      "HNG_financial_statements_2021_separate|1142",
+      "HNG_financial_statements_2021_separate|1165",
+      "HNG_financial_statements_2021_separate|1188",
+      "HNG_financial_statements_2021_separate|1205",
+      "HNG_financial_statements_2021_separate|1226",
+      "HNG_financial_statements_2021_separate|1245",
+      "HNG_financial_statements_2021_separate|1264",
+      "HNG_financial_statements_2021_separate|1285",
+      "HNG_financial_statements_2021_separate|302",
+      "HNG_financial_statements_2021_separate|717",
+      "HNG_financial_statements_2021_separate|738",
+      "HNG_financial_statements_2021_separate|742",
+      "HNG_financial_statements_2021_separate|843",
+      "HNG_financial_statements_2021_separate|847",
+      "HNG_financial_statements_2021_separate|862",
+      "HNG_financial_statements_2021_separate|866",
+      "HNG_financial_statements_2021_separate|887",
+      "HNG_financial_statements_2021_separate|987",
+      "HNG_financial_statements_2021_separate|991"
+    ],
+    "gold_n": 77
+  },
+  {
+    "id": 422,
+    "question": "Trong các doanh nghiệp hợp nhất ngành Nguyên vật liệu (Dầu Khí Cà Mau, DPM, GVR, Hoà Phát, Vicem Hà Tiên) năm 2024 có tăng trưởng doanh thu thuần cao hơn trung vị ngành, hệ số CFO trên LNST của doanh nghiệp có chênh lệch dương giữa LNST và CFO lớn nhất là bao nhiêu lần, làm tròn 2 chữ số thập phân?",
+    "query_family": "growth",
+    "search_tickers": [
+      "DPM",
+      "GVR",
+      "DCM",
+      "HPG",
+      "HT1"
+    ],
+    "search_keywords": [
+      "doanh thu thuần",
+      "lợi nhuận sau thuế",
+      "lưu chuyển tiền thuần từ hoạt động kinh doanh"
+    ],
+    "search_years": [
+      "2023",
+      "2024"
+    ],
+    "gold_tables": [
+      "DCM_financial_statements_2023_consolidated|110",
+      "DCM_financial_statements_2023_consolidated|1334",
+      "DCM_financial_statements_2023_consolidated|1376",
+      "DCM_financial_statements_2023_consolidated|1378",
+      "DCM_financial_statements_2023_consolidated|428",
+      "DCM_financial_statements_2023_consolidated|463",
+      "DCM_financial_statements_2023_consolidated|508",
+      "DCM_financial_statements_2023_separate|110",
+      "DCM_financial_statements_2023_separate|1362",
+      "DCM_financial_statements_2023_separate|1364",
+      "DCM_financial_statements_2023_separate|513",
+      "DCM_financial_statements_2023_separate|555",
+      "DCM_financial_statements_2023_separate|597",
+      "DCM_financial_statements_2024_consolidated|109",
+      "DCM_financial_statements_2024_consolidated|128",
+      "DCM_financial_statements_2024_consolidated|2188",
+      "DCM_financial_statements_2024_consolidated|2226",
+      "DCM_financial_statements_2024_consolidated|2241",
+      "DCM_financial_statements_2024_consolidated|419",
+      "DCM_financial_statements_2024_consolidated|462",
+      "DCM_financial_statements_2024_consolidated|584",
+      "DCM_financial_statements_2024_separate|109",
+      "DCM_financial_statements_2024_separate|128",
+      "DCM_financial_statements_2024_separate|1756",
+      "DCM_financial_statements_2024_separate|1769",
+      "DCM_financial_statements_2024_separate|476",
+      "DCM_financial_statements_2024_separate|517",
+      "DCM_financial_statements_2024_separate|558",
+      "DPM_financial_statements_2023_consolidated|1644",
+      "DPM_financial_statements_2023_consolidated|1738",
+      "DPM_financial_statements_2023_consolidated|459",
+      "DPM_financial_statements_2023_consolidated|506",
+      "DPM_financial_statements_2023_consolidated|537",
+      "DPM_financial_statements_2023_separate|1587",
+      "DPM_financial_statements_2023_separate|1602",
+      "DPM_financial_statements_2023_separate|411",
+      "DPM_financial_statements_2023_separate|440",
+      "DPM_financial_statements_2023_separate|483",
+      "DPM_financial_statements_2024_consolidated|1271",
+      "DPM_financial_statements_2024_consolidated|1284",
+      "DPM_financial_statements_2024_consolidated|1288",
+      "DPM_financial_statements_2024_consolidated|1296",
+      "DPM_financial_statements_2024_consolidated|406",
+      "DPM_financial_statements_2024_consolidated|441",
+      "DPM_financial_statements_2024_consolidated|476",
+      "DPM_financial_statements_2024_separate|1252",
+      "DPM_financial_statements_2024_separate|1265",
+      "DPM_financial_statements_2024_separate|1269",
+      "DPM_financial_statements_2024_separate|1277",
+      "DPM_financial_statements_2024_separate|407",
+      "DPM_financial_statements_2024_separate|444",
+      "DPM_financial_statements_2024_separate|485",
+      "GVR_financial_statements_2023_consolidated|1883",
+      "GVR_financial_statements_2023_consolidated|2145",
+      "GVR_financial_statements_2023_consolidated|2224",
+      "GVR_financial_statements_2023_consolidated|2245",
+      "GVR_financial_statements_2023_consolidated|282",
+      "GVR_financial_statements_2023_consolidated|319",
+      "GVR_financial_statements_2023_consolidated|356",
+      "GVR_financial_statements_2023_separate|211",
+      "GVR_financial_statements_2023_separate|238",
+      "GVR_financial_statements_2023_separate|261",
+      "GVR_financial_statements_2023_separate|728",
+      "GVR_financial_statements_2024_consolidated|1907",
+      "GVR_financial_statements_2024_consolidated|2168",
+      "GVR_financial_statements_2024_consolidated|316",
+      "GVR_financial_statements_2024_consolidated|349",
+      "GVR_financial_statements_2024_consolidated|386",
+      "GVR_financial_statements_2024_separate|1246",
+      "GVR_financial_statements_2024_separate|302",
+      "GVR_financial_statements_2024_separate|325",
+      "GVR_financial_statements_2024_separate|357",
+      "HPG_financial_statements_2023_consolidated|1000",
+      "HPG_financial_statements_2023_consolidated|244",
+      "HPG_financial_statements_2023_consolidated|270",
+      "HPG_financial_statements_2023_consolidated|287",
+      "HPG_financial_statements_2023_consolidated|315",
+      "HPG_financial_statements_2023_consolidated|982",
+      "HPG_financial_statements_2023_separate|197",
+      "HPG_financial_statements_2023_separate|228",
+      "HPG_financial_statements_2023_separate|261",
+      "HPG_financial_statements_2024_consolidated|1645",
+      "HPG_financial_statements_2024_consolidated|208",
+      "HPG_financial_statements_2024_consolidated|239",
+      "HPG_financial_statements_2024_consolidated|256",
+      "HPG_financial_statements_2024_consolidated|280",
+      "HPG_financial_statements_2024_consolidated|914",
+      "HPG_financial_statements_2024_consolidated|930",
+      "HPG_financial_statements_2024_separate|192",
+      "HPG_financial_statements_2024_separate|216",
+      "HPG_financial_statements_2024_separate|240",
+      "HPG_financial_statements_2024_separate|902",
+      "HT1_financial_statements_2023_consolidated|1191",
+      "HT1_financial_statements_2023_consolidated|1277",
+      "HT1_financial_statements_2023_consolidated|1285",
+      "HT1_financial_statements_2023_consolidated|353",
+      "HT1_financial_statements_2023_consolidated|399",
+      "HT1_financial_statements_2023_consolidated|431",
+      "HT1_financial_statements_2023_separate|1157",
+      "HT1_financial_statements_2023_separate|347",
+      "HT1_financial_statements_2023_separate|393",
+      "HT1_financial_statements_2023_separate|428",
+      "HT1_financial_statements_2024_consolidated|1173",
+      "HT1_financial_statements_2024_consolidated|1194",
+      "HT1_financial_statements_2024_consolidated|1269",
+      "HT1_financial_statements_2024_consolidated|1279",
+      "HT1_financial_statements_2024_consolidated|363",
+      "HT1_financial_statements_2024_consolidated|399",
+      "HT1_financial_statements_2024_consolidated|438",
+      "HT1_financial_statements_2024_separate|1102",
+      "HT1_financial_statements_2024_separate|370",
+      "HT1_financial_statements_2024_separate|407",
+      "HT1_financial_statements_2024_separate|451"
+    ],
+    "gold_n": 113
+  },
+  {
+    "id": 958,
+    "question": "Tổng số dư nợ vay dài hạn từ ngân hàng cuối năm 2018 của Tập đoàn VINGROUP - CTCP, Tổng Công ty cổ phần Đầu tư Phát triển Xây dựng và CTCP Bluemarq Group là mấy nghìn tỷ đồng?",
+    "query_family": "aggregation",
+    "search_tickers": [
+      "DIG",
+      "VIC"
+    ],
+    "search_keywords": [
+      "vay dài hạn",
+      "vay và nợ thuê tài chính dài hạn"
+    ],
+    "search_years": [
+      "2018"
+    ],
+    "gold_tables": [
+      "DIG_financial_statements_2018_consolidated|1193",
+      "DIG_financial_statements_2018_consolidated|1455",
+      "DIG_financial_statements_2018_consolidated|232",
+      "DIG_financial_statements_2018_consolidated|251",
+      "DIG_financial_statements_2018_separate|1092",
+      "DIG_financial_statements_2018_separate|1330",
+      "DIG_financial_statements_2018_separate|223",
+      "DIG_financial_statements_2018_separate|238",
+      "VIC_financial_statements_2018_consolidated|1193",
+      "VIC_financial_statements_2018_consolidated|1296",
+      "VIC_financial_statements_2018_consolidated|1461",
+      "VIC_financial_statements_2018_consolidated|1790",
+      "VIC_financial_statements_2018_consolidated|1836",
+      "VIC_financial_statements_2018_consolidated|215",
+      "VIC_financial_statements_2018_consolidated|232",
+      "VIC_financial_statements_2018_separate|1282",
+      "VIC_financial_statements_2018_separate|236",
+      "VIC_financial_statements_2018_separate|253",
+      "VIC_financial_statements_2018_separate|890"
+    ],
+    "gold_n": 19
+  },
+  {
+    "id": 967,
+    "question": "Trong các năm 2017, 2021, 2023, 2024 và 2025, tổng số dư cuối năm dự phòng rủi ro cho vay khách hàng của Ngân hàng TMCP Đầu tư và Phát triển Việt Nam đạt mức cao nhất là bao nhiêu triệu đồng?",
+    "query_family": "aggregation",
+    "search_tickers": [
+      "BID"
+    ],
+    "search_keywords": [
+      "dự phòng rủi ro cho vay khách hàng"
+    ],
+    "search_years": [
+      "2017",
+      "2021",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "gold_tables": [
+      "BID_financial_statements_2017_consolidated|1156",
+      "BID_financial_statements_2017_consolidated|1748",
+      "BID_financial_statements_2017_consolidated|214",
+      "BID_financial_statements_2017_separate|1514",
+      "BID_financial_statements_2021_consolidated|1378",
+      "BID_financial_statements_2021_consolidated|276",
+      "BID_financial_statements_2023_consolidated|1429",
+      "BID_financial_statements_2023_consolidated|2097",
+      "BID_financial_statements_2023_consolidated|281",
+      "BID_financial_statements_2023_separate|1740",
+      "BID_financial_statements_2023_separate|274",
+      "BID_financial_statements_2024_consolidated|1597",
+      "BID_financial_statements_2024_consolidated|298",
+      "BID_financial_statements_2024_separate|323",
+      "BID_financial_statements_2025_consolidated|1512",
+      "BID_financial_statements_2025_consolidated|2330",
+      "BID_financial_statements_2025_consolidated|340",
+      "BID_financial_statements_2025_separate|1847",
+      "BID_financial_statements_2025_separate|313"
+    ],
+    "gold_n": 19
+  },
+  {
+    "id": 589,
+    "question": "Chênh lệch chi phí thuế TNDN giữa hai niên độ 2019 và 2016 của công ty mẹ CTCP Đầu tư Nam Long là bao nhiêu triệu đồng?",
+    "query_family": "comparison",
+    "search_tickers": [
+      "NLG"
+    ],
+    "search_keywords": [
+      "thuế thu nhập doanh nghiệp"
+    ],
+    "search_years": [
+      "2016",
+      "2019"
+    ],
+    "gold_tables": [
+      "NLG_financial_statements_2016_consolidated|275",
+      "NLG_financial_statements_2016_consolidated|834",
+      "NLG_financial_statements_2016_consolidated|997",
+      "NLG_financial_statements_2016_separate|268",
+      "NLG_financial_statements_2016_separate|772",
+      "NLG_financial_statements_2016_separate|869",
+      "NLG_financial_statements_2019_consolidated|1188",
+      "NLG_financial_statements_2019_consolidated|992",
+      "NLG_financial_statements_2019_separate|293",
+      "NLG_financial_statements_2019_separate|772",
+      "NLG_financial_statements_2019_separate|898"
+    ],
+    "gold_n": 11
+  },
+  {
+    "id": 628,
+    "question": "Số chênh lệch chi phí xây dựng cơ bản dở dang - Dự án Nhà máy Sản xuất Phân bón phức hợp từ Urê nóng chảy giữa cuối năm 2018 và cuối năm 2017 của CTCP - Tổng công ty Phân bón Dầu khí Cà Mau (DCM) là bao nhiêu tỷ đồng?",
+    "query_family": "comparison",
+    "search_tickers": [
+      "DCM"
+    ],
+    "search_keywords": [
+      "xây dựng cơ bản dở dang"
+    ],
+    "search_years": [
+      "2017",
+      "2018"
+    ],
+    "gold_tables": [
+      "DCM_financial_statements_2017_consolidated|335",
+      "DCM_financial_statements_2017_separate|401",
+      "DCM_financial_statements_2018_consolidated|334",
+      "DCM_financial_statements_2018_separate|333"
+    ],
+    "gold_n": 4
+  },
+  {
+    "id": 191,
+    "question": "Tài sản bằng đô la Mỹ USD của PVT cuối năm 2022 là bao nhiêu tỷ đồng?",
+    "query_family": "cross_company_comparison",
+    "search_tickers": [
+      "PVT"
+    ],
+    "search_keywords": [
+      "đô la mỹ",
+      "ngoại tệ"
+    ],
+    "search_years": [
+      "2022"
+    ],
+    "gold_tables": [
+      "PVT_financial_statements_2022_consolidated|1079",
+      "PVT_financial_statements_2022_consolidated|1362",
+      "PVT_financial_statements_2022_consolidated|368",
+      "PVT_financial_statements_2022_consolidated|399",
+      "PVT_financial_statements_2022_separate|1497",
+      "PVT_financial_statements_2022_separate|1649",
+      "PVT_financial_statements_2022_separate|449",
+      "PVT_financial_statements_2022_separate|476"
+    ],
+    "gold_n": 8
+  },
+  {
+    "id": 538,
+    "question": "Trong các năm 2023, 2024 và 2025, năm nào có chi phí lãi vay cao nhất của công ty mẹ có lưu chuyển tiền thuần từ hoạt động kinh doanh năm 2024 dương trong số CTCP Nhựa An Phát Xanh (AAA), Tổng Công ty Lâm nghiệp Việt Nam - CTCP (VIF) và CTCP Thép Nam Kim (NKG)?",
+    "query_family": "cross_company_comparison",
+    "search_tickers": [
+      "AAA",
+      "NKG",
+      "VIF"
+    ],
+    "search_keywords": [
+      "chi phí lãi vay"
+    ],
+    "search_years": [
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "gold_tables": [
+      "AAA_financial_statements_2023_consolidated|1367",
+      "AAA_financial_statements_2023_consolidated|1710",
+      "AAA_financial_statements_2023_consolidated|1793",
+      "AAA_financial_statements_2023_consolidated|1876",
+      "AAA_financial_statements_2023_consolidated|287",
+      "AAA_financial_statements_2023_separate|1105",
+      "AAA_financial_statements_2023_separate|1329",
+      "AAA_financial_statements_2023_separate|296",
+      "AAA_financial_statements_2023_separate|327",
+      "AAA_financial_statements_2024_consolidated|1463",
+      "AAA_financial_statements_2024_consolidated|1789",
+      "AAA_financial_statements_2024_consolidated|1885",
+      "AAA_financial_statements_2024_consolidated|267",
+      "AAA_financial_statements_2024_consolidated|315",
+      "AAA_financial_statements_2024_separate|1107",
+      "AAA_financial_statements_2024_separate|1263",
+      "AAA_financial_statements_2024_separate|296",
+      "AAA_financial_statements_2024_separate|320",
+      "AAA_financial_statements_2025_consolidated|311",
+      "AAA_financial_statements_2025_consolidated|357",
+      "AAA_financial_statements_2025_separate|1198",
+      "AAA_financial_statements_2025_separate|1415",
+      "AAA_financial_statements_2025_separate|321",
+      "NKG_financial_statements_2023_consolidated|1812",
+      "NKG_financial_statements_2023_consolidated|1874",
+      "NKG_financial_statements_2023_consolidated|421",
+      "NKG_financial_statements_2023_consolidated|446",
+      "NKG_financial_statements_2023_separate|1683",
+      "NKG_financial_statements_2023_separate|1751",
+      "NKG_financial_statements_2023_separate|418",
+      "NKG_financial_statements_2023_separate|443",
+      "NKG_financial_statements_2024_consolidated|1325",
+      "NKG_financial_statements_2024_consolidated|1348",
+      "NKG_financial_statements_2024_consolidated|274",
+      "NKG_financial_statements_2024_consolidated|301",
+      "NKG_financial_statements_2024_separate|1373",
+      "NKG_financial_statements_2024_separate|324",
+      "NKG_financial_statements_2024_separate|339",
+      "NKG_financial_statements_2025_consolidated|1013",
+      "NKG_financial_statements_2025_consolidated|1201",
+      "NKG_financial_statements_2025_consolidated|1243",
+      "NKG_financial_statements_2025_consolidated|1301",
+      "NKG_financial_statements_2025_consolidated|258",
+      "NKG_financial_statements_2025_consolidated|273",
+      "NKG_financial_statements_2025_separate|1007",
+      "NKG_financial_statements_2025_separate|1178",
+      "NKG_financial_statements_2025_separate|246",
+      "NKG_financial_statements_2025_separate|261",
+      "VIF_financial_statements_2023_consolidated|1317",
+      "VIF_financial_statements_2023_consolidated|1548",
+      "VIF_financial_statements_2023_consolidated|1602",
+      "VIF_financial_statements_2023_consolidated|319",
+      "VIF_financial_statements_2023_separate|309",
+      "VIF_financial_statements_2024_consolidated|1280",
+      "VIF_financial_statements_2024_consolidated|1577",
+      "VIF_financial_statements_2024_consolidated|1629",
+      "VIF_financial_statements_2024_consolidated|293",
+      "VIF_financial_statements_2024_separate|278",
+      "VIF_financial_statements_2025_consolidated|1634",
+      "VIF_financial_statements_2025_consolidated|1698",
+      "VIF_financial_statements_2025_consolidated|323",
+      "VIF_financial_statements_2025_separate|372"
+    ],
+    "gold_n": 62
+  }
+]

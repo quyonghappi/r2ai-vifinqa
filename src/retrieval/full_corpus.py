@@ -5,13 +5,27 @@ from __future__ import annotations
 import json
 import hashlib
 import re
+import unicodedata
 from pathlib import Path
 
 import pandas as pd
 
 from retrieval.decompose import MAX_CANDIDATES_PER_TICKER, concept_top_m, extract_concept_queries
-from retrieval.rerank import rerank_with_row_labels
+from retrieval.rerank import (
+    boost_primary_statement_sections,
+    penalize_unrequested_related_party_notes,
+    rerank_with_row_labels,
+)
 from retrieval.sparse import DEFAULT_STOPWORDS, build_enriched_document_text, build_index, tokenize
+
+
+def load_company_by_ticker(companies_path) -> dict[str, str]:
+    """Ticker -> company name registry, extracted once so every caller that needs canonical
+    entity resolution (this module's own ``rank_questions``, and downstream schema-linking/
+    generation via ``link_schema``'s ``company_by_ticker`` parameter) reads it identically
+    instead of re-parsing the CSV with its own ad hoc column-index assumptions."""
+    companies = pd.read_csv(companies_path, keep_default_na=False)
+    return dict(zip(companies.iloc[:, 0].astype(str), companies.iloc[:, 1].astype(str)))
 
 # Reranking blend weight for row-label overlap (retrieval.rerank.row_label_overlap_score, a
 # [0, 1] per-label Jaccard score) against raw BM25 score. Measured, not guessed (CHANGE_LOG.md
@@ -23,6 +37,8 @@ from retrieval.sparse import DEFAULT_STOPWORDS, build_enriched_document_text, bu
 # buried default) so it stays inspectable and re-tunable the same way `identity_boost` is in
 # retrieval.sparse.
 ROW_LABEL_RERANK_WEIGHT = 24.0
+DEFAULT_STATEMENT_SECTION_BONUS = 1.0
+DEFAULT_RELATED_PARTY_NOTE_PENALTY = 2.0
 
 
 # Shared across retrieval/schema_linking/query_generation (see their imports of this constant)
@@ -37,8 +53,87 @@ ROW_LABEL_RERANK_WEIGHT = 24.0
 # lookahead requires at least one letter so a bare 4-digit year ("2023") still cannot match.
 TICKER_TOKEN_RE = re.compile(r"\b(?=[A-Z0-9]*[A-Z])[A-Z0-9]{2,5}\b")
 _YEAR_RE = re.compile(r"\b(?:19|20)\d{2}\b")
+_YEAR_RANGE_RE = re.compile(
+    r"\b((?:19|20)\d{2})\s*(?:-|–|—|đến|tới)\s*((?:19|20)\d{2})\b", re.IGNORECASE
+)
 _NON_TICKER_CODES = frozenset({"BCTC", "CTCP", "TMCP", "TCT", "TNHH", "VND"})
 _COMPANY_NOISE = frozenset({"công", "ty", "cổ", "phần", "tổng", "ngân", "hàng"})
+_COMPANY_PHRASE_NOISE = _COMPANY_NOISE | frozenset(
+    {"ctcp", "tmcp", "tct", "tnhh", "tập", "đoàn", "việt", "nam"}
+)
+
+
+def _fold_phrase_token(token: str) -> str:
+    """Fold Vietnamese tone-placement variants for company-name phrase matching only."""
+    return "".join(
+        char for char in unicodedata.normalize("NFD", token)
+        if not unicodedata.combining(char)
+    ).replace("đ", "d")
+
+
+def _is_contiguous_subsequence(tokens: tuple[str, ...], container: tuple[str, ...]) -> bool:
+    return any(container[start:start + len(tokens)] == tokens for start in range(len(container) - len(tokens) + 1))
+
+
+def _phrase_ticker_matches(question: str, company_by_ticker: dict[str, str]) -> tuple[set[str], dict[str, set[str]]]:
+    """Resolve distinctive ordered company-name phrases without generic-overlap pollution.
+
+    Set overlap treats boilerplate such as ``Tập đoàn``/``Việt Nam`` as independent evidence and
+    cannot tell a short shared phrase (``Đầu tư Phát triển``) from a company's longer, explicitly
+    named phrase (``Đầu tư Phát triển Xây dựng``).  Keep token order, remove that boilerplate,
+    then discard a matched phrase if it is strictly contained in a longer matched phrase in the
+    same question.  This lets a literal ticker coexist with separately named full-name companies.
+    """
+    question_tokens = [
+        _fold_phrase_token(token) for token in tokenize(question, stopwords=DEFAULT_STOPWORDS)
+        if token not in _COMPANY_PHRASE_NOISE
+    ]
+    matched: dict[str, tuple[str, ...]] = {}
+    content_tokens_by_ticker: dict[str, set[str]] = {}
+    for ticker, company_name in company_by_ticker.items():
+        name_tokens = tuple(
+            _fold_phrase_token(token) for token in tokenize(company_name, stopwords=DEFAULT_STOPWORDS)
+            if token not in _COMPANY_PHRASE_NOISE
+        )
+        content_tokens_by_ticker[ticker] = set(name_tokens)
+        if not name_tokens:
+            continue
+        best: tuple[str, ...] = ()
+        for name_start in range(len(name_tokens)):
+            for question_start in range(len(question_tokens)):
+                width = 0
+                while (
+                    name_start + width < len(name_tokens)
+                    and question_start + width < len(question_tokens)
+                    and name_tokens[name_start + width] == question_tokens[question_start + width]
+                ):
+                    width += 1
+                if width > len(best):
+                    best = name_tokens[name_start:name_start + width]
+        coverage = len(best) / len(name_tokens)
+        # A single distinctive brand (e.g. VINGROUP) or complete post-boilerplate name is
+        # sufficient.  A partial name needs a longer run (or a three-token run containing an
+        # uncommonly long token such as ``Vicem``): this preserves a literal ticker against a
+        # short sector phrase like ``bất động sản`` while recovering real abbreviated names.
+        partial_is_distinctive = len(best) >= 4 or (
+            len(best) >= 3 and max((len(token) for token in best), default=0) >= 5
+        )
+        if (
+            (len(name_tokens) == 1 and len(best) == 1 and len(best[0]) >= 4)
+            or (len(best) == len(name_tokens) and len(best) >= 2)
+            or (coverage >= 0.5 and partial_is_distinctive)
+        ):
+            matched[ticker] = best
+
+    winners = {
+        ticker for ticker, phrase in matched.items()
+        if not any(
+            len(phrase) < len(other_phrase) and _is_contiguous_subsequence(phrase, other_phrase)
+            for other_ticker, other_phrase in matched.items()
+            if other_ticker != ticker
+        )
+    }
+    return winners, content_tokens_by_ticker
 
 
 def infer_question_tickers(question: str, company_by_ticker: dict[str, str]) -> set[str]:
@@ -70,11 +165,25 @@ def infer_question_tickers(question: str, company_by_ticker: dict[str, str]) -> 
     already-unambiguous literal ticker and accept that full-name-only group members beyond a
     literal anchor remain a known, unsolved limitation (not claimed fixed here).
     """
-    question_tokens = set(tokenize(question, stopwords=DEFAULT_STOPWORDS))
     literal_tickers = {
         token for token in TICKER_TOKEN_RE.findall(question)
         if token not in _NON_TICKER_CODES and token in company_by_ticker
     }
+    phrase_tickers, content_tokens_by_ticker = _phrase_ticker_matches(question, company_by_ticker)
+    if phrase_tickers:
+        if literal_tickers:
+            # Preserve the established nested-brand behavior (FPT -> FTS/FOX), while admitting
+            # other explicitly named companies alongside literal tickers (e.g. DPM/GVR plus
+            # DCM/HPG/HT1 written in full).  This is ordered-phrase evidence, not a generic
+            # token-set collision, so it is safe to combine.
+            nested_literals = {
+                ticker for ticker in literal_tickers
+                if any(ticker.lower() in content_tokens_by_ticker[candidate] for candidate in phrase_tickers)
+            }
+            return (literal_tickers - nested_literals) | phrase_tickers
+        return phrase_tickers
+
+    question_tokens = set(tokenize(question, stopwords=DEFAULT_STOPWORDS))
     name_scores = {}
     name_tokens_by_ticker = {}
     for ticker, company_name in company_by_ticker.items():
@@ -87,10 +196,22 @@ def infer_question_tickers(question: str, company_by_ticker: dict[str, str]) -> 
     # to override a literal listed ticker. Retain ties rather than guessing among companies.
     strong_name_scores = {ticker: score for ticker, score in name_scores.items() if score >= 3}
     if strong_name_scores:
+        if not literal_tickers:
+            # No literal ticker exists at all: a multi-company question naming several firms
+            # purely by full name (a real, non-rare shape -- group-screening questions like
+            # "trong số CTCP X, Tập đoàn Y và Tổng CTCP Z, công ty nào...") must surface every
+            # company clearing the strong-overlap threshold, not only the single highest-scoring
+            # one. Confirmed defect (2026-09-01 diagnostic audit, real question id 539): 3
+            # companies named only by full name scored 6/6/4; keeping only the tied-for-max
+            # winners returned the two that tied at 6 and silently dropped the third (score 4)
+            # entirely, while a fourth, unrelated company that happened to also tie at 6 on
+            # generic sector/legal-form vocabulary was returned instead. This does not fix that
+            # spurious-collision precision cost (a separate, deeper _COMPANY_NOISE/scoring gap,
+            # not addressed here) but recovers the dropped company, which F2's 4:1 recall
+            # weighting (CONTEXT.md Section 4) favors even at some precision cost.
+            return set(strong_name_scores)
         best = max(strong_name_scores.values())
         winners = {ticker for ticker, score in strong_name_scores.items() if score == best}
-        if not literal_tickers:
-            return winners
         if len(winners) == 1:
             winner = next(iter(winners))
             nested_literal = {
@@ -103,8 +224,19 @@ def infer_question_tickers(question: str, company_by_ticker: dict[str, str]) -> 
 
 
 def infer_question_years(question: str) -> set[int]:
-    """Return every explicitly requested reporting year, without guessing one."""
-    return {int(year) for year in _YEAR_RE.findall(question)}
+    """Return every explicitly requested reporting year, including inclusive year ranges.
+
+    A range such as ``2022-2024`` explicitly names the intermediate reporting year too.  Keeping
+    only its endpoints made schema-linking treat valid 2023 evidence as a wrong-year conflict,
+    even though retrieval intentionally leaves multi-year questions unscoped.  This is expansion
+    of stated period syntax, not a latest-year inference.
+    """
+    years = {int(year) for year in _YEAR_RE.findall(question)}
+    for start_text, end_text in _YEAR_RANGE_RE.findall(question):
+        start, end = int(start_text), int(end_text)
+        if start <= end:
+            years.update(range(start, end + 1))
+    return years
 
 
 def infer_question_variant(question: str) -> str | None:
@@ -139,6 +271,8 @@ def rank_questions(
     top_k: int = 10,
     row_label_index_path: str | Path | None = None,
     row_label_rerank_weight: float = ROW_LABEL_RERANK_WEIGHT,
+    statement_section_bonus: float = DEFAULT_STATEMENT_SECTION_BONUS,
+    related_party_note_penalty: float = DEFAULT_RELATED_PARTY_NOTE_PENALTY,
 ) -> dict[str, list[list]]:
     """Build the approved enriched index once and persist top-k scored table keys.
 
@@ -166,6 +300,8 @@ def rank_questions(
         "companies_bytes": Path(companies_path).stat().st_size,
         "row_label_index_bytes": Path(row_label_index_path).stat().st_size if row_label_index_path else None,
         "row_label_rerank_weight": row_label_rerank_weight if row_label_index_path else None,
+        "statement_section_bonus": statement_section_bonus,
+        "related_party_note_penalty": related_party_note_penalty,
         "retriever": "BM25 enriched identity_boost=5 DEFAULT_STOPWORDS entity_variant_scoped=true single_year_scoped=true concept_decomposition=true",
     }
     if output_path.exists() and metadata_path.exists():
@@ -186,14 +322,22 @@ def rank_questions(
     missing_columns = set(required_columns) - catalog_columns
     if missing_columns:
         raise ValueError(f"retrieval catalog is missing required columns: {sorted(missing_columns)}")
-    usecols = required_columns + (["variant"] if "variant" in catalog_columns else [])
+    optional_columns = [
+        name for name in ("variant", "section_header", "table_identity") if name in catalog_columns
+    ]
+    usecols = required_columns + optional_columns
     tables = pd.read_csv(catalog_path, usecols=usecols, keep_default_na=False)
     if "variant" not in tables:
         # Pre-v6 artifacts are valid for questions without an explicit variant.
         tables["variant"] = "unspecified"
-    companies = pd.read_csv(companies_path, keep_default_na=False)
-    company_by_ticker = dict(zip(companies.iloc[:, 0].astype(str), companies.iloc[:, 1].astype(str)))
+    if "section_header" not in tables:
+        tables["section_header"] = ""
+    if "table_identity" not in tables:
+        tables["table_identity"] = ""
+    company_by_ticker = load_company_by_ticker(companies_path)
     doc_ids = (tables["report_id"] + "|" + tables["line_position"].astype(str)).tolist()
+    section_by_doc_id = dict(zip(doc_ids, tables["section_header"].astype(str)))
+    table_identity_by_doc_id = dict(zip(doc_ids, tables["table_identity"].astype(str)))
     texts = [
         build_enriched_document_text(
             str(row.ticker), company_by_ticker.get(str(row.ticker), ""), row.year, str(row.searchable_text),
@@ -211,12 +355,21 @@ def rank_questions(
         # Always truncates to top_k here, whether or not reranking actually ran -- callers pass
         # top_k=None into search() so this is the single place scope-wide candidate lists get
         # cut down, regardless of whether row_label_text_by_doc_id is populated.
-        if not row_label_text_by_doc_id or not ranked:
-            return ranked[:top_k]
-        question_tokens = frozenset(tokenize(question, stopwords=DEFAULT_STOPWORDS))
-        return rerank_with_row_labels(
-            ranked, question_tokens, row_label_text_by_doc_id, DEFAULT_STOPWORDS,
-            weight=row_label_rerank_weight,
+        if not ranked:
+            return []
+        reranked = ranked
+        if row_label_text_by_doc_id:
+            question_tokens = frozenset(tokenize(question, stopwords=DEFAULT_STOPWORDS))
+            reranked = rerank_with_row_labels(
+                ranked, question_tokens, row_label_text_by_doc_id, DEFAULT_STOPWORDS,
+                weight=row_label_rerank_weight,
+            )
+        reranked = penalize_unrequested_related_party_notes(
+            reranked, section_by_doc_id, table_identity_by_doc_id, question,
+            penalty=related_party_note_penalty,
+        )
+        return boost_primary_statement_sections(
+            reranked, section_by_doc_id, bonus=statement_section_bonus,
         )[:top_k]
 
     def ticker_scoped_index(ticker: str, years: frozenset, variant: str | None):

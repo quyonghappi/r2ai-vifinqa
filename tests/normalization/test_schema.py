@@ -15,6 +15,7 @@ from normalization.schema import (
 )
 
 FIXTURE = Path(__file__).resolve().parents[1] / "fixtures" / "SYN_financial_statements_2020_consolidated_extracted.txt"
+UNIT_FIXTURE = Path(__file__).resolve().parents[1] / "fixtures" / "UNIT_financial_statements_2022_separate_extracted.txt"
 
 
 def test_parse_report_id_standard_pattern():
@@ -72,6 +73,20 @@ def test_normalize_corpus_builds_searchable_text_and_metadata():
     assert record["row_labels"]
     assert len(record["column_metadata"]) == candidates[0].n_cols
     assert record["source_path"] == str(FIXTURE)
+
+
+def test_normalize_corpus_falls_back_to_preceding_unit_declaration_for_unit_less_note_table():
+    # Regression for the "selected direct-lookup column has no unambiguous source unit" failure
+    # class (CHANGE_LOG.md 2026-08-31 unit-declaration-threading entry): a note table with no
+    # unit text of its own must still resolve via the report's earlier "Đơn vị tính: VND" line.
+    candidates = extract_tables_from_file(str(UNIT_FIXTURE), report_id="UNIT_financial_statements_2022_separate")
+    normalized = normalize_corpus(candidates)
+    note_table = normalized[1]
+    assert note_table.detected_units == ["VND"]  # resolved via the threaded declaration, not local text
+    record = structured_record(note_table)
+    assert "VND" in record["detected_units"]
+    thu_lao_column = record["column_metadata"][2]
+    assert thu_lao_column["scale_to_vnd"] == 1
 
 
 def test_normalize_corpus_resolves_company_name_when_provided():

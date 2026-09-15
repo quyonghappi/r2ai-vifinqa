@@ -10,6 +10,7 @@ from extraction.parser import (
 )
 
 FIXTURE = Path(__file__).resolve().parents[1] / "fixtures" / "SYN_financial_statements_2020_consolidated_extracted.txt"
+UNIT_FIXTURE = Path(__file__).resolve().parents[1] / "fixtures" / "UNIT_financial_statements_2022_separate_extracted.txt"
 
 
 def test_derive_report_id_uses_parent_directory_name():
@@ -87,6 +88,17 @@ def test_table_grid_parser_does_not_raise_on_unknown_tag():
     p.feed("<table><tr><td>a<fcel/>b</td></tr></table>")
     p.close()
     assert p.rows[0][0]["text"] == "ab"
+
+
+def test_preceding_unit_declaration_threads_forward_across_page_breaks():
+    # "Đơn vị tính: VND" is stated once on page 1; a note table on page 40 has no unit text
+    # of its own. The declaration must still be threaded to it as running state, unlike
+    # caption_context which is bounded to 3 lines and stops at page breaks.
+    candidates = extract_tables_from_file(str(UNIT_FIXTURE))
+    assert len(candidates) == 2
+    assert candidates[0].preceding_unit_declaration == "Đơn vị tính: VND"
+    assert candidates[1].preceding_unit_declaration == "Đơn vị tính: VND"
+    assert not any("VND" in c for c in candidates[1].caption_context)
 
 
 def test_shape_anomalies_are_observable_but_do_not_drop_candidate():

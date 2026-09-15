@@ -33,7 +33,7 @@ def _query_variables(query: str, declared: set[str]) -> set[str]:
     allowed_nodes = (
         ast.Expression, ast.BinOp, ast.UnaryOp, ast.Name, ast.Constant, ast.Add, ast.Sub,
         ast.Mult, ast.Div, ast.Pow, ast.USub, ast.UAdd, ast.Call, ast.Load, ast.Attribute,
-        ast.Subscript, ast.Compare, ast.Eq, ast.BitAnd,
+        ast.Subscript, ast.Compare, ast.Eq, ast.BitAnd, ast.Tuple,
     )
     for node in ast.walk(tree):
         if not isinstance(node, allowed_nodes):

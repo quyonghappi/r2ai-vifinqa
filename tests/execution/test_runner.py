@@ -19,9 +19,19 @@ def test_explicit_repair_loop_records_validation_error_then_succeeds():
     table = table_fixture()
     linked = link_schema("Doanh thu thuần AAA năm 2023", [table])
     linked.query_family = "comparison"  # exercise the model-backed repair loop, not direct lookup
+    # 2 operands (comparison-family plans require >=2 grounded operands, see validate_plan's
+    # _MULTI_OPERAND_FAMILIES check); only "x" is referenced by the expression, exactly like the
+    # real single-value-answer shape this test exercises -- the second operand exists purely to
+    # satisfy the family's minimum-operand-count rule, not to change what's computed.
     outputs = iter([
-        json.dumps({"operands": [{"alias": "x", "table_key": "AAA_report|10", "row_index": 999, "column_index": 1}], "expression": "x"}),
-        json.dumps({"operands": [{"alias": "x", "table_key": "AAA_report|10", "row_index": 1, "column_index": 1}], "expression": "x"}),
+        json.dumps({"operands": [
+            {"alias": "x", "table_key": "AAA_report|10", "row_index": 999, "column_index": 1},
+            {"alias": "y", "table_key": "AAA_report|10", "row_index": 1, "column_index": 2},
+        ], "expression": "x"}),
+        json.dumps({"operands": [
+            {"alias": "x", "table_key": "AAA_report|10", "row_index": 1, "column_index": 1},
+            {"alias": "y", "table_key": "AAA_report|10", "row_index": 1, "column_index": 2},
+        ], "expression": "x"}),
     ])
     prompts = []
     def complete(prompt):

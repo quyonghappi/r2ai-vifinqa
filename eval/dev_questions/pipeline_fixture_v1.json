@@ -1,0 +1,979 @@
+[
+  {
+    "id": 1,
+    "question": "Lãi tiền gửi năm 2018 của công ty mẹ CTCP Hàng không Vietjet (VJC) là bao nhiêu triệu đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "direct_lookup",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["VJC_financial_statements_2018_separate|1179"],
+      "docs": ["VJC_financial_statements_2018_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "VJC_financial_statements_2018_separate|1179", "note": "row 1 col 1: Lãi tiền gửi = 208.253.201.298 VND"}],
+      "derivation": "VJC...|1179 row 1 col 1: 208253201298 VND / 1e6",
+      "expected_answer": 208253.201298,
+      "expected_unit": "triệu đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "note table 'Doanh thu hoạt động tài chính' lists Lãi tiền gửi=208.253.201.298 (2018), matches magnitude of the cash-flow adjustment line at line 229.",
+      "assumptions": []
+    }
+  },
+  {
+    "id": 2,
+    "question": "Số dư cho vay khách hàng ngành Thương mại của công ty mẹ Ngân hàng TMCP Á Châu (ACB) cuối năm 2022 là bao nhiêu triệu đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "direct_lookup",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["ACB_financial_statements_2022_separate|1504"],
+      "docs": ["ACB_financial_statements_2022_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "ACB_financial_statements_2022_separate|1504", "note": "row 1 col 1, 'Thương mại' row, 31.12.2022 column"}],
+      "derivation": "ACB...|1504 row 1 col 1; source header is Triệu VND",
+      "expected_answer": 72917566.0,
+      "expected_unit": "triệu đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "industry breakdown note table, 'Thương mại' row, 31.12.2022 column = 72.917.566 triệu VND.",
+      "assumptions": []
+    }
+  },
+  {
+    "id": 4,
+    "question": "Lợi nhuận sau thuế của CTCP Chứng khoán FPT năm 2023 là bao nhiêu tỷ đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "direct_lookup",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["FTS_financial_statements_2023|414"],
+      "docs": ["FTS_financial_statements_2023"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "FTS_financial_statements_2023|414", "note": "row 24 col 3: 'XI. LỢI NHUẬN KẾ TOÁN SAU THUẾ TNDN' = 444.917.590.949 VND"}],
+      "derivation": "FTS...|414 row 24 col 3: 444917590949 VND / 1e9",
+      "expected_answer": 444.917590949,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "CORRECTED 2026-08-23: audit found the previous key |390 ends at operating expenses and cannot answer the question. Raw OCR line 414 contains 'XI. LỢI NHUẬN KẾ TOÁN SAU THUẾ TNDN'=444.917.590.949 VND. Entity remains ticker FTS, not FPT; the internal title identifies this non-standard report_id as separate/parent statements.",
+      "assumptions": ["Company-name-to-ticker mapping is not a safe substring match: 'FPT' in the question resolves the unrelated parent group, not FTS."]
+    }
+  },
+  {
+    "id": 5,
+    "question": "Chi phí phạt của công ty mẹ SCR năm 2017 là bao nhiêu tỷ đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "direct_lookup",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["SCR_financial_statements_2017_separate|1251"],
+      "docs": ["SCR_financial_statements_2017_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "SCR_financial_statements_2017_separate|1251", "note": "row 1 col 1: Chi phí phạt = 5.535.987.434 VND (2017)"}],
+      "derivation": "SCR...|1251 row 1 col 1: 5535987434 VND / 1e9",
+      "expected_answer": 5.535987434,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "notes breakdown table, single unambiguous hit: Chi phí phạt=5.535.987.434 (2017).",
+      "assumptions": []
+    }
+  },
+  {
+    "id": 6,
+    "question": "Lưu chuyển tiền thuần từ hoạt động kinh doanh của công ty mẹ VSC trong năm 2017 là bao nhiêu tỷ đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "direct_lookup",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["VSC_financial_statements_2017_separate|224"],
+      "docs": ["VSC_financial_statements_2017_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "VSC_financial_statements_2017_separate|224", "note": "row 19 col 2: cash flow statement top-line total"}],
+      "derivation": "VSC...|224 row 19 col 2: 145731366146 VND / 1e9",
+      "expected_answer": 145.731366146,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "cash flow statement top-line total, value 145.731.366.146 VND matches the tỷ đồng scale implied by the question.",
+      "assumptions": []
+    }
+  },
+  {
+    "id": 7,
+    "question": "Quỹ khen thưởng, phúc lợi của HT1 cuối năm 2019 là bao nhiêu tỷ đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "direct_lookup",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["HT1_financial_statements_2019_consolidated|292"],
+      "docs": ["HT1_financial_statements_2019_consolidated"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "HT1_financial_statements_2019_consolidated|292", "note": "row 11 col 3"}],
+      "derivation": "HT1...|292 row 11 col 3: 57764463052 VND / 1e9",
+      "expected_answer": 57.764463052,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "ASSUMPTION: question does not specify công ty mẹ, defaulted to consolidated. Checked both variants -- this line item (57.764.463.052) is identical in consolidated and separate for this company/year, so the assumption is not answer-changing here, but is not guaranteed to hold in general.",
+      "assumptions": ["'no qualifier' question defaulted to consolidated variant; spot-checked equal to separate for this record only."]
+    }
+  },
+  {
+    "id": 9,
+    "question": "Chi phí khác của SAM năm 2023 là bao nhiêu triệu đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "direct_lookup",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["SAM_financial_statements_2023_consolidated|230"],
+      "docs": ["SAM_financial_statements_2023_consolidated"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "SAM_financial_statements_2023_consolidated|230", "note": "row 15 col 3"}],
+      "derivation": "SAM...|230 row 15 col 3: 2949600088 VND / 1e6",
+      "expected_answer": 2949.600088,
+      "expected_unit": "triệu đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "ASSUMPTION: variant not specified, defaulted to consolidated (not cross-checked against separate for this one -- unlike Q7).",
+      "assumptions": ["'no qualifier' question defaulted to consolidated variant; not cross-checked against separate."]
+    }
+  },
+  {
+    "id": 13,
+    "question": "Tiền và các khoản tương đương tiền của công ty mẹ Tổng Công ty cổ phần Bia - Rượu - Nước giải khát Sài Gòn (SAB) vào cuối năm 2016 là bao nhiêu tỷ đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "direct_lookup",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["SAB_financial_statements_2016_separate|240"],
+      "docs": ["SAB_financial_statements_2016_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "SAB_financial_statements_2016_separate|240", "note": "row 2 col 3: balance sheet top asset line"}],
+      "derivation": "SAB...|240 row 2 col 3: 1880612291229 VND / 1e9",
+      "expected_answer": 1880.612291229,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "balance sheet top asset line, single unambiguous hit.",
+      "assumptions": []
+    }
+  },
+  {
+    "id": 25,
+    "question": "Giá vốn hàng hóa của DIG trong năm 2023 là bao nhiêu tỷ đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "direct_lookup",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["DIG_financial_statements_2023_consolidated|1384"],
+      "docs": ["DIG_financial_statements_2023_consolidated"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "DIG_financial_statements_2023_consolidated|1384", "note": "row 6 col 1: cost-of-goods-sold breakdown note"}],
+      "derivation": "DIG...|1384 row 6 col 1: 37015620950 VND / 1e9",
+      "expected_answer": 37.01562095,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "ASSUMPTION: variant not specified, defaulted to consolidated. This exact term only matched in the consolidated report's cost-of-goods-sold breakdown note, not in separate.",
+      "assumptions": ["'no qualifier' question defaulted to consolidated variant."]
+    }
+  },
+  {
+    "id": 584,
+    "question": "Chênh lệch vốn chủ sở hữu giữa cuối năm 2025 và cuối năm 2024 của Công ty CP Nhựa An Phát Xanh (AAA) là bao nhiêu tỷ đồng?",
+    "pipeline_family": "comparison",
+    "question_shape": "multi_year",
+    "known_failure_reference": {
+      "source": "eval/dev_questions/README.md 2026-08-30 addition note",
+      "failure_mode": "BM25 ranking-quality failure: required table is inside the correctly entity-scoped candidate pool but ranked outside top-10 because AAA has 1,356 same-ticker tables in the full catalog."
+    },
+    "gold": {
+      "tables": ["AAA_financial_statements_2025_consolidated|279"],
+      "docs": ["AAA_financial_statements_2025_consolidated"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "AAA_financial_statements_2025_consolidated|279", "note": "row 19: one balance sheet table carries both the current-period-end (2025) and prior-period-end (2024) columns"}],
+      "derivation": "AAA...|279 row 19: (6079230359763-6236273953200)/1e9; signed 2025 minus 2024 development convention",
+      "expected_answer": -157.043593437,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "STRUCTURAL FINDING: one balance sheet table already carries both the current-period-end AND prior-period-end columns, so an adjacent-year comparison needs only ONE report/table, not two. ASSUMPTION: variant defaulted to consolidated.",
+      "assumptions": ["'no qualifier' question defaulted to consolidated variant.", "Signed difference convention is later period minus earlier period."]
+    }
+  },
+  {
+    "id": 598,
+    "question": "Tổng số dư phải trả người bán ngắn hạn với bên liên quan của công ty mẹ HNG từ cuối năm 2020 đến cuối năm 2021 thay đổi bao nhiêu phần trăm?",
+    "pipeline_family": "growth",
+    "question_shape": "growth",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["HNG_financial_statements_2021_separate|1226"],
+      "docs": ["HNG_financial_statements_2021_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "HNG_financial_statements_2021_separate|1226", "note": "row 15: related-party notes disclosure table with 'Số cuối năm'/'Số đầu năm' columns covering both years"}],
+      "derivation": "HNG...|1226 row 15: (25682255-578819180)/578819180*100; source header Ngàn VND cancels in ratio",
+      "expected_answer": -95.56299171012267,
+      "expected_unit": "%",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "used the related-party notes disclosure table (has 'Số cuối năm'/'Số đầu năm' columns covering both years), not the generic balance-sheet total line, since the question specifically asks for the related-party subset.",
+      "assumptions": []
+    }
+  },
+  {
+    "id": 604,
+    "question": "Biến động tổng tài sản của công ty mẹ DLG giữa cuối năm 2019 và cuối năm 2018 là bao nhiêu tỷ đồng?",
+    "pipeline_family": "comparison",
+    "question_shape": "multi_year",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["DLG_financial_statements_2019_separate|472"],
+      "docs": ["DLG_financial_statements_2019_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [{"table_key": "DLG_financial_statements_2019_separate|472", "note": "row 12: TỔNG CỘNG TÀI SẢN line carries both 2019 and 2018 columns"}],
+      "derivation": "DLG...|472 row 12: (5355530683088-5231553268752)/1e9; signed 2019 minus 2018 convention",
+      "expected_answer": 123.977414336,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "TỔNG CỘNG TÀI SẢN line carries both 2019 and 2018 columns in one table.",
+      "assumptions": []
+    }
+  },
+  {
+    "id": 405,
+    "question": "Trong giai đoạn 2022-2024 của VIC, xét các năm doanh thu thuần tăng so với năm liền trước, ROE của năm có vòng quay tổng tài sản theo tài sản bình quân cao nhất là bao nhiêu phần trăm?",
+    "pipeline_family": "ratio_or_derived",
+    "question_shape": "ratio_or_derived",
+    "known_failure_reference": {
+      "source": "eval/dev_questions/README.md 2026-08-30 addition note",
+      "failure_mode": "BM25 ranking-quality failure: required tables are inside the correctly entity-scoped candidate pool (VIC has 2,112 same-ticker tables) but ranked outside top-10."
+    },
+    "gold": {
+      "tables": [
+        "VIC_financial_statements_2023_consolidated|259",
+        "VIC_financial_statements_2023_consolidated|288",
+        "VIC_financial_statements_2024_consolidated|266",
+        "VIC_financial_statements_2024_consolidated|292"
+      ],
+      "docs": ["VIC_financial_statements_2023_consolidated", "VIC_financial_statements_2024_consolidated"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": null,
+      "derivation": "Both 2023 and 2024 net revenue increased; asset turnover using average total assets is 0.259308 for 2023 vs 0.251377 for 2024, so choose 2023. ROE local convention = total LNST 2056061 / average total equity ((135655449+148221686)/2) * 100. All inputs are triệu VND.",
+      "expected_answer": 1.4485569610951583,
+      "expected_unit": "%",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "LOWER CONFIDENCE / BEST EFFORT: complex multi-condition question (revenue-growth filter, then max-asset-turnover selection, then ROE). Ground truth here covers the 4 tables that jointly carry equity, net profit, revenue and total assets for 2022/2023/2024 (each balance-sheet/income-statement table already carries the prior-year column, so 2 report-years' tables cover all 3 fiscal years) -- verified the equity and net-profit figures agree across the two reports' overlapping prior-year columns. This is retrieval-relevance ground truth only; it does not itself verify the final computed answer.",
+      "assumptions": ["Best-effort: table-retrieval relevance is verified; the final multi-step computed answer is not independently re-derived to the same rigor as the simple-lookup records."]
+    }
+  },
+  {
+    "id": 795,
+    "question": "Cuối năm 2019, chi phí trả trước ngắn hạn trên BCTC riêng của GAS cao hơn POW bao nhiêu tỷ đồng?",
+    "pipeline_family": "cross_company_comparison",
+    "question_shape": "comparison",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["GAS_financial_statements_2019_separate|272", "POW_financial_statements_2019_separate|862"],
+      "docs": ["GAS_financial_statements_2019_separate", "POW_financial_statements_2019_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "GAS_financial_statements_2019_separate|272", "note": "row 17 col 4: balance sheet line item directly"},
+        {"table_key": "POW_financial_statements_2019_separate|862", "note": "row 6 col 1: notes breakdown table, 'a. Ngắn hạn' subtotal"}
+      ],
+      "derivation": "GAS...|272 row 17 col 4 minus POW...|862 row 6 col 1: (50699483380-24968201119)/1e9",
+      "expected_answer": 25.731282261,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "GAS: balance sheet line item directly. POW: balance sheet did not have a directly-matching phrase in a single search; used the notes breakdown table whose 'a. Ngắn hạn' subtotal (24.968.201.119 for 2019) is the short-term prepaid-expense figure.",
+      "assumptions": ["POW's value is read from a notes breakdown table, not the balance sheet face, since no direct balance-sheet match was found."]
+    }
+  },
+  {
+    "id": 627,
+    "question": "Chênh lệch số dư Tài sản thuế thu nhập hoãn lại của PVT ở cuối năm 2018 so với cuối năm 2016 là bao nhiêu triệu đồng?",
+    "pipeline_family": "comparison",
+    "question_shape": "multi_year",
+    "known_failure_reference": {
+      "source": "eval/dev_questions/README.md 2026-08-30 addition note",
+      "failure_mode": "BM25 ranking-quality failure: PVT has 1,466 same-ticker tables; also exercises the genuine two-table-retrieval case (unlike Q584/Q604, this pair does not carry both years in one grid)."
+    },
+    "gold": {
+      "tables": ["PVT_financial_statements_2016_consolidated|230", "PVT_financial_statements_2018_consolidated|949"],
+      "docs": ["PVT_financial_statements_2016_consolidated", "PVT_financial_statements_2018_consolidated"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "PVT_financial_statements_2016_consolidated|230", "note": "row 21 col 3: balance sheet non-current-assets section, 'Tài sản thuế thu nhập hoãn lại', Số cuối năm"},
+        {"table_key": "PVT_financial_statements_2018_consolidated|949", "note": "row 3 col 1: deferred-tax-asset note table, Số cuối năm"}
+      ],
+      "derivation": "PVT_2018...|949 row 3 col 1 (41676677160) minus PVT_2016...|230 row 21 col 3 (13838474530); (41676677160-13838474530)/1e6; signed 2018 minus 2016 convention",
+      "expected_answer": 27838.20263,
+      "expected_unit": "triệu đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "2016 value from the balance sheet's non-current-assets section; 2018 value from the deferred-tax-asset note table. Two different tables/report_ids required, not one -- unlike Q584/Q604, this table pair does not carry both years in one grid.",
+      "assumptions": []
+    }
+  },
+  {
+    "id": 591,
+    "question": "Chênh lệch số dư cho vay khách hàng - gộp (chưa quá hạn và chưa phải lập dự phòng) của Ngân hàng TMCP Đông Nam Á giữa hai mốc cuối năm 2022 và cuối năm 2021 là bao nhiêu, tính bằng triệu đồng?",
+    "pipeline_family": "comparison",
+    "question_shape": "multi_year",
+    "known_failure_reference": {
+      "source": "eval/dev_questions/README.md 2026-08-30 addition note",
+      "failure_mode": "BM25 ranking-quality failure: banking-sector case (SSB has 2,568 same-ticker tables); dev_v1's original banking coverage was a single ACB question before this addition."
+    },
+    "gold": {
+      "tables": ["SSB_financial_statements_2021_consolidated|204", "SSB_financial_statements_2022_consolidated|194"],
+      "docs": ["SSB_financial_statements_2021_consolidated", "SSB_financial_statements_2022_consolidated"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "SSB_financial_statements_2021_consolidated|204", "note": "row 12 col 3: bank's primary balance sheet, 'Cho vay khách hàng' gross line"},
+        {"table_key": "SSB_financial_statements_2022_consolidated|194", "note": "row 11 col 3: bank's primary balance sheet, 'Cho vay khách hàng' gross line"}
+      ],
+      "derivation": "SSB_2022...|194 row 11 col 3 (153955992) minus SSB_2021...|204 row 12 col 3 (127588159); source unit already triệu VND, no scaling; signed 2022 minus 2021 convention",
+      "expected_answer": 26367833.0,
+      "expected_unit": "triệu đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "Both tables are the bank's primary balance sheet ('Cho vay khách hàng' gross line, before the 'Dự phòng rủi ro cho vay khách hàng' deduction). ASSUMPTION: 'gộp (chưa quá hạn và chưa phải lập dự phòng)' is read as describing the gross pre-provision line already on the balance sheet face, not a separate loan-quality-tier note breakdown; not cross-checked against a quality-tier note table.",
+      "assumptions": ["'gộp (chưa quá hạn và chưa phải lập dự phòng)' interpreted as the gross pre-provision balance-sheet line, not a separate quality-tier note."]
+    }
+  },
+  {
+    "id": 959,
+    "question": "Vào cuối năm nào trong các năm 2016, 2017, 2018 và 2020, vốn chủ sở hữu của Tập đoàn Công nghiệp Cao su Việt Nam - CTCP (GVR) đạt mức cao nhất?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "max_min",
+    "known_failure_reference": {
+      "source": "eval/dev_questions/README.md 2026-08-30 addition note",
+      "failure_mode": "BM25 ranking-quality failure: deliberately a 4-table argmax-across-years case (GVR has 2,109 same-ticker tables), the hardest retrieval shape in dev_v1."
+    },
+    "gold": {
+      "tables": [
+        "GVR_financial_statements_2016_consolidated|261",
+        "GVR_financial_statements_2017_consolidated|286",
+        "GVR_financial_statements_2018_consolidated|257",
+        "GVR_financial_statements_2020_consolidated|309"
+      ],
+      "docs": [
+        "GVR_financial_statements_2016_consolidated", "GVR_financial_statements_2017_consolidated",
+        "GVR_financial_statements_2018_consolidated", "GVR_financial_statements_2020_consolidated"
+      ],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": null,
+      "derivation": "max(45202279722550, 48034267483067, 49568303094429, 51430652051301) over 2016/2017/2018/2020 occurs at 2020; LOWER CONFIDENCE / BEST EFFORT, retrieval ground truth only, like Q405",
+      "expected_answer": 2020.0,
+      "expected_unit": "year (not a currency value; argmax selector -- see verification note)",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "all 4 years' 'D - VỐN CHỦ SỞ HỮU' balance-sheet total rows verified (45.202.279.722.550 / 48.034.267.483.067 / 49.568.303.094.429 / 51.430.652.051.301 VND for 2016/2017/2018/2020 respectively; max is 2020). LOWER CONFIDENCE / BEST EFFORT on the final answer, like Q405: this is retrieval-relevance ground truth (does the system retrieve all 4 required tables), not a verified answer-computation contract. NOTE: company name contains 'Tập đoàn', which infer_question_variant's keyword-based consolidated trigger would also fire on even if unintended -- flagged as a known false-positive-trigger risk, not fixed.",
+      "assumptions": [
+        "Best-effort: 4 individual year-values independently verified; the argmax selection itself is not independently re-derived to the same rigor as a simple lookup.",
+        "REAL CLASSIFIER MISMATCH: applying schema_linking.linker.classify_query_family's actual rules by hand, this question has no literal ticker-count>1, no ratio/growth/aggregation/comparison keyword match ('cao nhất' is not in the comparison trigger list) -- it falls through to the direct_lookup default despite being a 4-table argmax-across-years question. This is a genuine pipeline_family/question_shape mismatch worth tracking, not a fixture error."
+      ]
+    }
+  },
+  {
+    "id": 961,
+    "question": "Tổng giá trị hàng tồn kho cuối kỳ lớn nhất của CTCP Nông nghiệp BAF Việt Nam (công ty mẹ) trong các năm 2020, 2022, 2024 và 2025 là bao nhiêu tỷ đồng?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "max_min",
+    "known_failure_reference": {
+      "source": "eval/dev_questions/README.md 2026-08-30 addition note",
+      "failure_mode": "BM25 ranking-quality failure: second 4-table argmax-across-years case, separate/parent variant, smaller candidate pool (875 tables) than GVR's for contrast."
+    },
+    "gold": {
+      "tables": [
+        "BAF_financial_statements_2020_separate|219",
+        "BAF_financial_statements_2022_separate|242",
+        "BAF_financial_statements_2024_separate|259",
+        "BAF_financial_statements_2025_separate|240"
+      ],
+      "docs": [
+        "BAF_financial_statements_2020_separate", "BAF_financial_statements_2022_separate",
+        "BAF_financial_statements_2024_separate", "BAF_financial_statements_2025_separate"
+      ],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": null,
+      "derivation": "max(988720909873, 730673889982, 1508776640729, 1721356683254)/1e9 over 2020/2022/2024/2025 occurs at 2025",
+      "expected_answer": 1721.356683254,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "ported_from_dev_v1",
+      "note": "'Hàng tồn kho' balance-sheet line verified for all 4 years: 988.720.909.873 / 730.673.889.982 / 1.508.776.640.729 / 1.721.356.683.254 VND for 2020/2022/2024/2025; max is 2025, which unlike Q959 is itself the requested answer, not just the selector -- so this entry's expected_answer is a verified value, not best-effort.",
+      "assumptions": [
+        "REAL CLASSIFIER MISMATCH (same as id 959): by hand-applying classify_query_family's rules, this falls through to direct_lookup despite being a 4-table argmax-across-years question -- 'Tổng giá trị' does not contain the exact aggregation trigger substrings ('tổng cộng'/'tổng số'), and 'lớn nhất' is not a comparison trigger."
+      ]
+    }
+  },
+  {
+    "id": 589,
+    "question": "Chênh lệch chi phí thuế TNDN giữa hai niên độ 2019 và 2016 của công ty mẹ CTCP Đầu tư Nam Long là bao nhiêu triệu đồng?",
+    "pipeline_family": "comparison",
+    "question_shape": "multi_year",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["NLG_financial_statements_2016_separate|246", "NLG_financial_statements_2019_separate|268"],
+      "docs": ["NLG_financial_statements_2016_separate", "NLG_financial_statements_2019_separate"],
+      "equivalent_tables": ["NLG_financial_statements_2016_separate|1155", "NLG_financial_statements_2019_separate|1169"],
+      "partial_tables": [],
+      "operands": null,
+      "derivation": null,
+      "expected_answer": null,
+      "expected_unit": null,
+      "answer_tolerance": null
+    },
+    "verification": {
+      "method": "ported_from_retrieval_specificity_v1",
+      "note": "2016 separate income statement: row '15. Chỉ phí thuế TNDN hiện hành', period ending 31 December 2016. 2019 separate income statement: row '15. Chi phí thuế TNDN hiện hành', period ending 31 December 2019. RETRIEVAL-ONLY: retrieval_specificity_v1 verified gold/equivalent tables by manual grid read but never hand-derived a numeric expected_answer -- do not use this record for ANSWER_ACCURACY/EXECUTION_ACCURACY scoring, only TABLES_*.",
+      "assumptions": ["No expected_answer exists for this record; it is retrieval-diagnostic only."]
+    }
+  },
+  {
+    "id": 845,
+    "question": "Lãi cơ bản trên cổ phiếu (EPS) lớn nhất của Tập đoàn Bảo Việt (BVH) qua các năm tài chính 2017, 2019, 2022 và 2024 là bao nhiêu nghìn đồng/cổ phiếu?",
+    "pipeline_family": "direct_lookup",
+    "question_shape": "max_min",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": [
+        "BVH_financial_statements_2017_consolidated|468", "BVH_financial_statements_2019_consolidated|306",
+        "BVH_financial_statements_2022_consolidated|348", "BVH_financial_statements_2024_consolidated|317"
+      ],
+      "docs": [
+        "BVH_financial_statements_2017_consolidated", "BVH_financial_statements_2019_consolidated",
+        "BVH_financial_statements_2022_consolidated", "BVH_financial_statements_2024_consolidated"
+      ],
+      "equivalent_tables": [
+        "BVH_financial_statements_2017_consolidated|2400", "BVH_financial_statements_2019_consolidated|2155",
+        "BVH_financial_statements_2022_consolidated|2255", "BVH_financial_statements_2024_consolidated|2229"
+      ],
+      "partial_tables": [],
+      "operands": null,
+      "derivation": "max(2286, 1689, 2089, 2843) VND over 2017/2019/2022/2024 occurs at 2024",
+      "expected_answer": null,
+      "expected_unit": null,
+      "answer_tolerance": null
+    },
+    "verification": {
+      "method": "ported_from_retrieval_specificity_v1",
+      "note": "2017 consolidated income statement: row 'Lãi cơ bản trên cổ phiếu', value 2,286 VND. 2019: 1,689 VND. 2022: 2,089 VND. 2024: 2,843 VND. RETRIEVAL-ONLY: gold/equivalent tables and the 4 individual per-year values are manually verified, but the final argmax-year answer expressed in the question's requested unit (nghìn đồng/cổ phiếu) was never independently derived and cross-checked the way dev_v1's answer records were -- do not use for ANSWER_ACCURACY/EXECUTION_ACCURACY scoring, only TABLES_*.",
+      "assumptions": ["No expected_answer exists for this record; it is retrieval-diagnostic only."]
+    }
+  },
+  {
+    "id": 578,
+    "question": "Tổng số dư trả trước cho người bán ngắn hạn của công ty mẹ CTCP Nông nghiệp BAF Việt Nam cuối năm 2025 trừ đi mức cuối năm 2022 là bao nhiêu tỷ đồng?",
+    "pipeline_family": "aggregation",
+    "question_shape": "multi_year",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["BAF_financial_statements_2022_separate|242", "BAF_financial_statements_2025_separate|240"],
+      "docs": ["BAF_financial_statements_2022_separate", "BAF_financial_statements_2025_separate"],
+      "equivalent_tables": ["BAF_financial_statements_2022_separate|763", "BAF_financial_statements_2025_separate|821"],
+      "partial_tables": ["BAF_financial_statements_2022_separate|1404", "BAF_financial_statements_2025_separate|1843"],
+      "operands": null,
+      "derivation": null,
+      "expected_answer": null,
+      "expected_unit": null,
+      "answer_tolerance": null
+    },
+    "verification": {
+      "method": "ported_from_retrieval_specificity_v1",
+      "note": "2022 separate balance sheet: row '2. Trả trước cho người bán ngắn hạn'. 2025 separate balance sheet: row '2. Trả trước cho người bán ngắn hạn'. Related-party notes (partial_tables) quantify only a subset, not the full requested balance -- see TABLES_F2_AUDIT.md C.6 for the canonical/equivalent/partial role distinction this record established. RETRIEVAL-ONLY: no hand-derived numeric expected_answer -- do not use for ANSWER_ACCURACY/EXECUTION_ACCURACY, only TABLES_*.",
+      "assumptions": [
+        "No expected_answer exists for this record; it is retrieval-diagnostic only.",
+        "REAL CLASSIFIER NOTE: classify_query_family returns 'aggregation' for this question purely because it contains the substring 'Tổng số' -- even though semantically this is a two-period subtraction, not a sum/avg/count reduction. Recorded as-is (matches the real classifier output) rather than corrected, since the fixture's pipeline_family field is meant to reflect actual classifier behavior, not an idealized one."
+      ]
+    }
+  },
+  {
+    "id": 629,
+    "question": "Tỷ lệ biến động số dư dự phòng phải thu ngắn hạn khó đòi giữa hai kỳ tài chính của công ty mẹ HBC giữa năm 2016 và năm 2020 là bao nhiêu %?",
+    "pipeline_family": "ratio_or_derived",
+    "question_shape": "multi_year",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["HBC_financial_statements_2016_separate|190", "HBC_financial_statements_2020_separate|208"],
+      "docs": ["HBC_financial_statements_2016_separate", "HBC_financial_statements_2020_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": null,
+      "derivation": "(384655311583-262534406527)/262534406527*100",
+      "expected_answer": null,
+      "expected_unit": null,
+      "answer_tolerance": null
+    },
+    "verification": {
+      "method": "ported_from_retrieval_specificity_v1",
+      "note": "2016 separate balance sheet: row '6. Dự phòng phải thu ngắn hạn khó đòi', closing balance (262,534,406,527) VND. 2020: closing balance (384,655,311,583) VND. RETRIEVAL-ONLY: gold tables and both individual cell values are manually verified; the % formula above is provided for reference but was not independently cross-checked and re-verified to dev_v1's standard -- do not use for ANSWER_ACCURACY/EXECUTION_ACCURACY, only TABLES_*.",
+      "assumptions": ["No confirmed expected_answer exists for this record; it is retrieval-diagnostic only."]
+    }
+  },
+  {
+    "id": 1006,
+    "question": "Tính giá trị trung bình của chỉ tiêu thu nhập bình quân năm của nhân viên năm 2025 của các công ty mẹ NAB, ABB, ACB và STB ra đơn vị triệu đồng.",
+    "pipeline_family": "aggregation",
+    "question_shape": "aggregation",
+    "known_failure_reference": {
+      "source": "predictions/1006.json (run-2)",
+      "failure_mode": "executed_but_wrong: used_tables collapsed to 1 table, the pipeline returned one bank's own raw value relabeled as the 4-bank average."
+    },
+    "gold": {
+      "tables": [
+        "ACB_financial_statements_2025_separate|2113",
+        "ABB_financial_statements_2025_separate|2176",
+        "STB_financial_statements_2025_separate|2327",
+        "NAB_financial_statements_2025_separate|2049"
+      ],
+      "docs": [
+        "ACB_financial_statements_2025_separate", "ABB_financial_statements_2025_separate",
+        "STB_financial_statements_2025_separate", "NAB_financial_statements_2025_separate"
+      ],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "ACB_financial_statements_2025_separate|2113", "row_index": 5, "column_index": 1, "note": "Tổng thu nhập, Năm 2025", "value": 5684495.0},
+        {"table_key": "ACB_financial_statements_2025_separate|2113", "row_index": 1, "column_index": 1, "note": "Số lượng nhân viên bình quân, Năm 2025", "value": 12549.0},
+        {"table_key": "ABB_financial_statements_2025_separate|2176", "row_index": 6, "column_index": 1, "note": "4. Tổng thu nhập (1+2+3), Năm nay", "value": 1444907.0},
+        {"table_key": "ABB_financial_statements_2025_separate|2176", "row_index": 1, "column_index": 1, "note": "I. Tổng số nhân viên trung bình, Năm nay", "value": 3489.0},
+        {"table_key": "STB_financial_statements_2025_separate|2327", "row_index": 4, "column_index": 1, "note": "3. Tổng thu nhập (3=1+2), 2025", "value": 6935912.0},
+        {"table_key": "STB_financial_statements_2025_separate|2327", "row_index": 1, "column_index": 1, "note": "Tổng số cán bộ, công nhân viên bình quân, 2025", "value": 16058.0},
+        {"table_key": "NAB_financial_statements_2025_separate|2049", "row_index": 5, "column_index": 1, "note": "3. Tổng thu nhập (1+2), Năm nay", "value": 1816957.0},
+        {"table_key": "NAB_financial_statements_2025_separate|2049", "row_index": 1, "column_index": 1, "note": "I. Tổng số nhân viên trung bình, Năm nay", "value": 5391.0}
+      ],
+      "expected_group": {"name": "banks_2025_income_per_employee", "metric_label": "thu nhập bình quân năm của nhân viên", "member_count": 4},
+      "expected_reduction": {"op": "avg", "group": "banks_2025_income_per_employee"},
+      "derivation_formula": "((acb_total/acb_headcount) + (abb_total/abb_headcount) + (stb_total/stb_headcount) + (nab_total/nab_headcount)) / 4",
+      "derivation_values": {"acb_total": 5684495.0, "acb_headcount": 12549.0, "abb_total": 1444907.0, "abb_headcount": 3489.0, "stb_total": 6935912.0, "stb_headcount": 16058.0, "nab_total": 1816957.0, "nab_headcount": 5391.0},
+      "expected_answer": 409.02000870656553,
+      "expected_unit": "triệu đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "Real cross-company reporting-granularity mismatch found and resolved: ACB's 2025 separate note table reports an explicit ANNUAL per-employee figure ('Thu nhập bình quân/người/năm' = 453, row7/col1) but ABB/STB/NAB's equivalent notes only report a MONTHLY figure. Rather than assume monthly*12 (unverified for 3 of 4 banks), each bank's own reported 'Tổng thu nhập' (total annual income) was divided by its own reported average headcount -- one consistent methodology applied identically across all 4 banks using only each bank's own disclosed totals. This is internally consistent with ACB's own rounded convenience row (5684495/12549=452.98 vs ACB's own rounded '453').",
+      "assumptions": [
+        "Annual per-employee income is computed uniformly as Tổng thu nhập / average headcount for all 4 banks, rather than using ACB's own rounded convenience row ('453') directly -- a deliberate consistency choice, not a correction of ACB's figure (they agree to within rounding).",
+        "No qualifier beyond 'công ty mẹ' (already separate/parent per the question) was needed; all 4 banks' 2025 separate reports contain this note table."
+      ]
+    }
+  },
+  {
+    "id": 938,
+    "question": "Tính tổng số dư cho vay khách hàng cuối kỳ năm 2018 của các ngân hàng TMCP Hàng hải Việt Nam (MSB), TMCP Xuất nhập khẩu Việt Nam (EIB) và TMCP Sài Gòn Thương Tín (STB), đơn vị tính: Triệu đồng.",
+    "pipeline_family": "aggregation",
+    "question_shape": "aggregation",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": [
+        "EIB_financial_statements_2018_consolidated|192",
+        "MSB_financial_statements_2018_consolidated|204",
+        "STB_financial_statements_2018_consolidated|139"
+      ],
+      "docs": [
+        "EIB_financial_statements_2018_consolidated", "MSB_financial_statements_2018_consolidated",
+        "STB_financial_statements_2018_consolidated"
+      ],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "EIB_financial_statements_2018_consolidated|192", "row_index": 9, "column_index": 3, "note": "'Cho vay khách hàng', 31/12/2018 column, primary balance sheet", "value": 104042577.0},
+        {"table_key": "MSB_financial_statements_2018_consolidated|204", "row_index": 12, "column_index": 3, "note": "'Cho vay khách hàng', 31/12/2018 column, primary balance sheet", "value": 48762243.0},
+        {"table_key": "STB_financial_statements_2018_consolidated|139", "row_index": 12, "column_index": 3, "note": "'Cho vay khách hàng', 31/12/2018 column, primary balance sheet", "value": 256622753.0}
+      ],
+      "expected_group": {"name": "banks_2018_loans_to_customers", "metric_label": "Cho vay khách hàng", "member_count": 3},
+      "expected_reduction": {"op": "sum", "group": "banks_2018_loans_to_customers"},
+      "derivation_formula": "eib + msb + stb",
+      "derivation_values": {"eib": 104042577.0, "msb": 48762243.0, "stb": 256622753.0},
+      "expected_answer": 409427573.0,
+      "expected_unit": "triệu đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "All 3 banks' 'Cho vay khách hàng' gross balance-sheet line (row directly under the asset section, all three tables share the same 5-column shape: ['','','Thuyết minh','31/12/2018 Triệu VND','31/12/2017 Triệu VND']), column_index 3 = the 2018 value in every case. No qualifier ('công ty mẹ') specified in the question; defaulted to consolidated, consistent with dev_v1's own established no-qualifier convention.",
+      "assumptions": ["'No qualifier' question defaulted to consolidated variant, matching dev_v1's established convention."]
+    }
+  },
+  {
+    "id": 954,
+    "question": "Tính giá trị trung bình chi phí lãi vay của DPM, VIF và HSG tại năm 2018 theo đơn vị tỷ đồng.",
+    "pipeline_family": "aggregation",
+    "question_shape": "aggregation",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": [
+        "DPM_financial_statements_2018_consolidated|344",
+        "VIF_financial_statements_2018_consolidated|337",
+        "HSG_financial_statements_2018_consolidated|280"
+      ],
+      "docs": [
+        "DPM_financial_statements_2018_consolidated", "VIF_financial_statements_2018_consolidated",
+        "HSG_financial_statements_2018_consolidated"
+      ],
+      "equivalent_tables": [
+        "DPM_financial_statements_2018_consolidated|305", "VIF_financial_statements_2018_consolidated|300",
+        "HSG_financial_statements_2018_consolidated|238"
+      ],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "DPM_financial_statements_2018_consolidated|344", "row_index": 8, "column_index": 3, "note": "dedicated financial-expense breakdown note, 'Chi phí lãi vay', Năm nay", "value": 62586468519.0},
+        {"table_key": "VIF_financial_statements_2018_consolidated|337", "row_index": 8, "column_index": 2, "note": "dedicated financial-expense breakdown note, 'Chi phí lãi vay', Năm nay (no separate STT column, unlike DPM/HSG)", "value": 9589605241.0},
+        {"table_key": "HSG_financial_statements_2018_consolidated|280", "row_index": 7, "column_index": 3, "note": "dedicated financial-expense breakdown note, 'Chi phí lãi vay', Năm nay", "value": 811669226449.0}
+      ],
+      "expected_group": {"name": "dpm_vif_hsg_2018_interest_expense", "metric_label": "Chi phí lãi vay", "member_count": 3},
+      "expected_reduction": {"op": "avg", "group": "dpm_vif_hsg_2018_interest_expense"},
+      "derivation_formula": "(dpm + hsg + vif) / 3 / 1e9",
+      "derivation_values": {"dpm": 62586468519.0, "hsg": 811669226449.0, "vif": 9589605241.0},
+      "expected_answer": 294.6151000696667,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "Each company's income statement carries the value twice -- once as an inline 'Trong đó: Chi phí lãi vay' memo row, and once as its own dedicated financial-expense breakdown note table -- and both agree exactly for all 3 companies (DPM 62.586.468.519; HSG 811.669.226.449; VIF 9.589.605.241), a useful cross-check. The dedicated note tables (gold) were chosen over the inline memo rows (recorded as equivalent_tables). No qualifier ('công ty mẹ') specified; defaulted to consolidated.",
+      "assumptions": ["'No qualifier' question defaulted to consolidated variant.", "VIF's note table has a different column layout (no leading STT column) than DPM/HSG's -- column_index correctly differs (2 vs 3) per-table, verified against each table's own header row, not assumed uniform."]
+    }
+  },
+  {
+    "id": 2001,
+    "question": "Căn cứ số liệu năm 2016 của công ty mẹ AAA, công ty mẹ NKG, công ty mẹ DCM và công ty mẹ DPM, tổng số công ty có phát sinh chi phí lãi vay nhiều hơn 100 tỷ là bao nhiêu?",
+    "pipeline_family": "aggregation",
+    "question_shape": "count_filter",
+    "known_failure_reference": {
+      "source": "failures/1002.json (run-2)",
+      "failure_mode": "hard RuntimeError: disallowed expression syntax: Compare -- the model attempted boolean/count logic the old AST validator rejected outright, exactly the shape the 2026-09-04 count_gt/count_lt/count_ge/count_le reduction ops were added to close"
+    },
+    "gold": {
+      "tables": [
+        "AAA_financial_statements_2016_separate|279",
+        "NKG_financial_statements_2016_separate|390",
+        "DCM_financial_statements_2016_separate|402",
+        "DPM_financial_statements_2016_separate|283"
+      ],
+      "docs": [
+        "AAA_financial_statements_2016_separate", "NKG_financial_statements_2016_separate",
+        "DCM_financial_statements_2016_separate", "DPM_financial_statements_2016_separate"
+      ],
+      "equivalent_tables": [
+        "AAA_financial_statements_2016_separate|310", "DCM_financial_statements_2016_separate|429",
+        "DPM_financial_statements_2016_separate|976", "NKG_financial_statements_2016_separate|427"
+      ],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "AAA_financial_statements_2016_separate|279", "row_index": 8, "column_index": 3, "note": "'- Trong đó: Chi phí lãi vay', Năm 2016 column, income statement; cross-confirmed identical in notes table |310 row 9", "value": 23874478344.0},
+        {"table_key": "NKG_financial_statements_2016_separate|390", "row_index": 8, "column_index": 3, "note": "'- Trong đó: chi phí lãi vay', Năm nay (2016) column, income statement; cross-confirmed identical in |427 row 8", "value": 141639235578.0},
+        {"table_key": "DCM_financial_statements_2016_separate|402", "row_index": 8, "column_index": 3, "note": "'- Trong đó: Chỉ phí lãi vay', Năm nay (2016) column; cross-confirmed identical in |429 row 8", "value": 203937110047.0},
+        {"table_key": "DPM_financial_statements_2016_separate|283", "row_index": 8, "column_index": 2, "note": "'Chỉ phí lãi vay' operating-cash-flow reconciliation add-back, Năm nay (2016) column; cross-confirmed identical in note table |976 row 2", "value": 4473655664.0}
+      ],
+      "expected_group": {"name": "companies_2016_interest_expense", "metric_label": "Chi phí lãi vay", "member_count": 4},
+      "expected_reduction": {"op": "count_gt", "group": "companies_2016_interest_expense", "threshold": 100.0},
+      "derivation_formula": "(a > t) + (b > t) + (c > t) + (d > t)",
+      "derivation_values": {"a": 23.874478344, "b": 141.639235578, "c": 203.937110047, "d": 4.473655664, "t": 100.0},
+      "expected_answer": 2.0,
+      "expected_unit": "công ty (count)",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "Streamed data/processed/normalized_tables.jsonl (146,243 lines) filtering by report_id, read each company's real 2016 'Chi phí lãi vay' row and its column header/period_labels directly (never trusted extraction/retrieval output). Every value is corroborated by a second, independent table for the same company giving the identical figure. In tỷ đồng: AAA=23.87, NKG=141.64 (>100), DCM=203.94 (>100), DPM=4.47 -- 2 companies exceed 100 tỷ.",
+      "assumptions": [
+        "DPM's interest expense is sourced from its cash-flow-statement reconciliation add-back line rather than a dedicated income-statement line -- treated as equivalent since it is the standard 'chi phí lãi vay đã ghi nhận vào Báo cáo KQKD' figure and is independently corroborated by note table |976.",
+        "All four values are already in raw VND per each table's own column header/period_labels -- no scale inference was needed."
+      ]
+    }
+  },
+  {
+    "id": 2002,
+    "question": "Trong số công ty mẹ AAA, công ty mẹ NKG, công ty mẹ DCM và công ty mẹ DPM, có bao nhiêu công ty phát sinh chi phí lãi vay năm 2016 dưới 50 tỷ?",
+    "pipeline_family": "cross_company_comparison",
+    "question_shape": "count_filter",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": [
+        "AAA_financial_statements_2016_separate|279",
+        "NKG_financial_statements_2016_separate|390",
+        "DCM_financial_statements_2016_separate|402",
+        "DPM_financial_statements_2016_separate|283"
+      ],
+      "docs": [
+        "AAA_financial_statements_2016_separate", "NKG_financial_statements_2016_separate",
+        "DCM_financial_statements_2016_separate", "DPM_financial_statements_2016_separate"
+      ],
+      "equivalent_tables": [
+        "AAA_financial_statements_2016_separate|310", "DCM_financial_statements_2016_separate|429",
+        "DPM_financial_statements_2016_separate|976", "NKG_financial_statements_2016_separate|427"
+      ],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "AAA_financial_statements_2016_separate|279", "row_index": 8, "column_index": 3, "note": "same cell as id 2001", "value": 23874478344.0},
+        {"table_key": "NKG_financial_statements_2016_separate|390", "row_index": 8, "column_index": 3, "note": "same cell as id 2001", "value": 141639235578.0},
+        {"table_key": "DCM_financial_statements_2016_separate|402", "row_index": 8, "column_index": 3, "note": "same cell as id 2001", "value": 203937110047.0},
+        {"table_key": "DPM_financial_statements_2016_separate|283", "row_index": 8, "column_index": 2, "note": "same cell as id 2001", "value": 4473655664.0}
+      ],
+      "expected_group": {"name": "companies_2016_interest_expense", "metric_label": "Chi phí lãi vay", "member_count": 4},
+      "expected_reduction": {"op": "count_lt", "group": "companies_2016_interest_expense", "threshold": 50.0},
+      "derivation_formula": "(a < t) + (b < t) + (c < t) + (d < t)",
+      "derivation_values": {"a": 23.874478344, "b": 141.639235578, "c": 203.937110047, "d": 4.473655664, "t": 50.0},
+      "expected_answer": 2.0,
+      "expected_unit": "công ty (count)",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "Reuses id 2001's independently-verified real cell values under a different reduction (count_lt, threshold 50) -- a legitimate second test of the reduction-op family on already-verified data. AAA=23.87 and DPM=4.47 tỷ are below 50; NKG=141.64 and DCM=203.94 are not -- count=2.",
+      "assumptions": [
+        "REAL CLASSIFIER NOTE: dropping id 2001's 'tổng số' phrasing and having all 4 tickers appear literally flips classify_query_family's result to cross_company_comparison (>1 literal ticker) instead of aggregation, even though the computation is the identical count-reduction shape. A genuine phrasing-sensitivity, not a fixture error."
+      ]
+    }
+  },
+  {
+    "id": 2003,
+    "question": "Tính đến cuối năm 2019, trong số DIG, SAM, SCR và VSC, có bao nhiêu công ty có tổng cộng tài sản không vượt quá 6.000 tỷ đồng?",
+    "pipeline_family": "aggregation",
+    "question_shape": "count_filter",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": [
+        "DIG_financial_statements_2019_consolidated|225",
+        "SAM_financial_statements_2019_consolidated|202",
+        "SCR_financial_statements_2019_separate|264",
+        "VSC_financial_statements_2019_separate|199"
+      ],
+      "docs": [
+        "DIG_financial_statements_2019_consolidated", "SAM_financial_statements_2019_consolidated",
+        "SCR_financial_statements_2019_separate", "VSC_financial_statements_2019_separate"
+      ],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "DIG_financial_statements_2019_consolidated|225", "row_index": 28, "column_index": 3, "note": "'TỔNG CỘNG TÀI SẢN' (code 270), 'Số cuối năm' column", "value": 8197228507758.0},
+        {"table_key": "SAM_financial_statements_2019_consolidated|202", "row_index": 27, "column_index": 3, "note": "'TỔNG CỘNG TÀI SẢN' (code 270), 'Số cuối năm' column", "value": 5210939924350.0},
+        {"table_key": "SCR_financial_statements_2019_separate|264", "row_index": 28, "column_index": 3, "note": "'TỔNG CỘNG TÀI SẢN' (code 270), 'Số cuối năm' column", "value": 10405904367671.0},
+        {"table_key": "VSC_financial_statements_2019_separate|199", "row_index": 22, "column_index": 3, "note": "'TỔNG NGUỒN VỐN(440 = 300 + 400)', '31/12/2019' column -- equals total assets by the balance-sheet identity; this table's row_labels did not separately capture an asset-side total row", "value": 1466470204762.0}
+      ],
+      "expected_group": {"name": "companies_2019_total_assets", "metric_label": "Tổng cộng tài sản / Tổng nguồn vốn", "member_count": 4},
+      "expected_reduction": {"op": "count_le", "group": "companies_2019_total_assets", "threshold": 6000.0},
+      "derivation_formula": "(dig <= t) + (sam <= t) + (scr <= t) + (vsc <= t)",
+      "derivation_values": {"dig": 8197.228507758, "sam": 5210.93992435, "scr": 10405.904367671, "vsc": 1466.470204762, "t": 6000.0},
+      "expected_answer": 2.0,
+      "expected_unit": "công ty (count)",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "Streamed normalized_tables.jsonl filtering by report_id and the 'TỔNG CỘNG TÀI SẢN' row label; period_labels/column headers read directly to confirm the 2019 year-end column. DIG=8,197.23, SAM=5,210.94, SCR=10,405.90 tỷ are above 6,000 tỷ; VSC=1,466.47 tỷ is below -- count at/below 6,000 tỷ = 2 (VSC, SAM).",
+      "assumptions": [
+        "DIG and SAM used at consolidated variant, SCR and VSC at separate variant -- each company's naturally available/primary variant, not forced uniform. The question deliberately omits 'công ty mẹ' for this reason.",
+        "VSC's value is TỔNG NGUỒN VỐN (liabilities+equity total), used via the standard balance-sheet identity (assets = liabilities + equity), stated explicitly rather than silently assumed."
+      ]
+    }
+  },
+  {
+    "id": 2101,
+    "question": "Trong ba công ty thép niêm yết Hòa Phát (HPG), Hoa Sen (HSG) và Nam Kim (NKG), giá trị lợi nhuận sau thuế TNDN năm 2020 (báo cáo công ty mẹ) cao nhất là bao nhiêu tỷ đồng?",
+    "pipeline_family": "cross_company_comparison",
+    "question_shape": "max_min",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": [
+        "HPG_financial_statements_2020_separate|213",
+        "HSG_financial_statements_2020_separate|198",
+        "NKG_financial_statements_2020_separate|301"
+      ],
+      "docs": [
+        "HPG_financial_statements_2020_separate", "HSG_financial_statements_2020_separate",
+        "NKG_financial_statements_2020_separate"
+      ],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "HPG_financial_statements_2020_separate|213", "row_index": 17, "column_index": 3, "note": "'Lợi nhuận sau thuế TNDN (60 = 50 - 51)', 2020 VND column", "value": 16213406068587.0},
+        {"table_key": "HSG_financial_statements_2020_separate|198", "row_index": 19, "column_index": 3, "note": "'Lợi nhuận sau thuế TNDN (60 = 50 - 51 - 52)', fiscal year ended 30/9/2020 column", "value": 1075585099435.0},
+        {"table_key": "NKG_financial_statements_2020_separate|301", "row_index": 19, "column_index": 3, "note": "'Lợi nhuận sau thuế TNDN', 2020 VND column", "value": 247229914896.0}
+      ],
+      "expected_group": {"name": "steel_companies_2020", "metric_label": "Lợi nhuận sau thuế TNDN", "member_count": 3},
+      "expected_reduction": {"op": "max", "group": "steel_companies_2020"},
+      "derivation_formula": "max(hpg, hsg, nkg) / 1e9",
+      "derivation_values": {"hpg": 16213406068587.0, "hsg": 1075585099435.0, "nkg": 247229914896.0},
+      "expected_answer": 16213.406068587,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "All 3 values read directly from data/processed/normalized_tables.jsonl grid + period_labels metadata (confirms column_index=3 = the 2020/current fiscal year for all 3 tables). HPG|213 row17: 16.213.406.068.587. HSG|198 row19 (fiscal year ends 30/9): 1.075.585.099.435. NKG|301 row19: 247.229.914.896. Max is HPG's value.",
+      "assumptions": [
+        "HSG's fiscal year ends 30 September, not 31 December like HPG/NKG -- 'năm 2020' is read as HSG's FY2020 (ending 30/9/2020), a real cross-company fiscal-year-alignment nuance.",
+        "classify_query_family correctly returns cross_company_comparison here (3 literal tickers), unlike dev_v1 ids 959/961 which fall to direct_lookup -- this question is argmax-across-companies with 3 literal tickers, so the ticker-count rule fires correctly."
+      ]
+    }
+  },
+  {
+    "id": 2102,
+    "question": "Trong ba công ty thép niêm yết Hòa Phát (HPG), Hoa Sen (HSG) và Nam Kim (NKG), giá trị lợi nhuận sau thuế TNDN năm 2020 (báo cáo công ty mẹ) thấp nhất là bao nhiêu tỷ đồng?",
+    "pipeline_family": "cross_company_comparison",
+    "question_shape": "max_min",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": [
+        "HPG_financial_statements_2020_separate|213",
+        "HSG_financial_statements_2020_separate|198",
+        "NKG_financial_statements_2020_separate|301"
+      ],
+      "docs": [
+        "HPG_financial_statements_2020_separate", "HSG_financial_statements_2020_separate",
+        "NKG_financial_statements_2020_separate"
+      ],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "HPG_financial_statements_2020_separate|213", "row_index": 17, "column_index": 3, "note": "'Lợi nhuận sau thuế TNDN (60 = 50 - 51)', 2020 VND column", "value": 16213406068587.0},
+        {"table_key": "HSG_financial_statements_2020_separate|198", "row_index": 19, "column_index": 3, "note": "'Lợi nhuận sau thuế TNDN (60 = 50 - 51 - 52)', fiscal year ended 30/9/2020 column", "value": 1075585099435.0},
+        {"table_key": "NKG_financial_statements_2020_separate|301", "row_index": 19, "column_index": 3, "note": "'Lợi nhuận sau thuế TNDN', 2020 VND column", "value": 247229914896.0}
+      ],
+      "expected_group": {"name": "steel_companies_2020", "metric_label": "Lợi nhuận sau thuế TNDN", "member_count": 3},
+      "expected_reduction": {"op": "min", "group": "steel_companies_2020"},
+      "derivation_formula": "min(hpg, hsg, nkg) / 1e9",
+      "derivation_values": {"hpg": 16213406068587.0, "hsg": 1075585099435.0, "nkg": 247229914896.0},
+      "expected_answer": 247.229914896,
+      "expected_unit": "tỷ đồng",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "Same 3 source cells as id 2101; min is NKG's 247,229,914,896 VND.",
+      "assumptions": [
+        "Same HSG fiscal-year-end nuance as id 2101.",
+        "Companion record to id 2101 sharing the same verified operand set, testing the 'min' reduction op instead of 'max'."
+      ]
+    }
+  },
+  {
+    "id": 2103,
+    "question": "ROE (lợi nhuận sau thuế của công ty mẹ trên vốn chủ sở hữu bình quân) hợp nhất năm 2021 của CTCP Đầu tư Thế giới Di động (MWG) là bao nhiêu phần trăm?",
+    "pipeline_family": "ratio_or_derived",
+    "question_shape": "ratio_or_derived",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["MWG_financial_statements_2021_consolidated|205", "MWG_financial_statements_2021_consolidated|222"],
+      "docs": ["MWG_financial_statements_2021_consolidated"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "MWG_financial_statements_2021_consolidated|222", "row_index": 20, "column_index": 3, "note": "'19. Lợi nhuận sau thuế của công ty mẹ', 2021 column", "value": 4898869278220.0},
+        {"table_key": "MWG_financial_statements_2021_consolidated|205", "row_index": 15, "column_index": 3, "note": "'D. VỐN CHỦ SỞ HỮU', 2021 year-end column", "value": 20378245999846.0},
+        {"table_key": "MWG_financial_statements_2021_consolidated|205", "row_index": 15, "column_index": 4, "note": "'D. VỐN CHỦ SỞ HỮU', 2020 year-end (prior) column", "value": 15481689846432.0}
+      ],
+      "expected_group": null,
+      "expected_reduction": null,
+      "derivation_formula": "net_profit / ((equity_end + equity_begin) / 2) * 100",
+      "derivation_values": {"net_profit": 4898869278220.0, "equity_end": 20378245999846.0, "equity_begin": 15481689846432.0},
+      "expected_answer": 27.322242288553717,
+      "expected_unit": "%",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "MWG_2021_consolidated|222 row20: profit attributable to parent-company shareholders ('Lợi nhuận sau thuế của công ty mẹ' = 4.898.869.278.220), not total consolidated LNST (which also includes non-controlling interest). MWG_2021_consolidated|205 row15: same balance sheet table carries both 2021 (col3) and 2020 (col4) equity in one grid, same convention as dev_v1 id 584.",
+      "assumptions": [
+        "ROE convention: net profit attributable to parent / average of (2021 year-end equity, 2020 year-end equity) * 100 -- same average-equity convention dev_v1 id 405 uses for VIC.",
+        "Used profit attributable to the parent company's own shareholders, not total consolidated net profit including non-controlling interest, since ROE is conventionally computed against the parent's own equity."
+      ]
+    }
+  },
+  {
+    "id": 2104,
+    "question": "ROE (lợi nhuận sau thuế trên vốn chủ sở hữu bình quân) năm 2022 của CTCP Sữa Việt Nam (VNM), báo cáo công ty mẹ, là bao nhiêu phần trăm?",
+    "pipeline_family": "ratio_or_derived",
+    "question_shape": "ratio_or_derived",
+    "known_failure_reference": null,
+    "gold": {
+      "tables": ["VNM_financial_statements_2022_separate|223", "VNM_financial_statements_2022_separate|252"],
+      "docs": ["VNM_financial_statements_2022_separate"],
+      "equivalent_tables": [],
+      "partial_tables": [],
+      "operands": [
+        {"table_key": "VNM_financial_statements_2022_separate|252", "row_index": 18, "column_index": 3, "note": "'Lợi nhuận sau thuế TNDN (60 = 50 - 51 - 52)', 2022 column", "value": 8872670664578.0},
+        {"table_key": "VNM_financial_statements_2022_separate|223", "row_index": 14, "column_index": 3, "note": "'VỐN CHỦ SỞ HỮU (400 = 410)', 2022 year-end column", "value": 29013924943549.0},
+        {"table_key": "VNM_financial_statements_2022_separate|223", "row_index": 14, "column_index": 4, "note": "'VỐN CHỦ SỞ HỮU (400 = 410)', 2021 year-end (prior) column", "value": 32000787431679.0}
+      ],
+      "expected_group": null,
+      "expected_reduction": null,
+      "derivation_formula": "net_profit / ((equity_end + equity_begin) / 2) * 100",
+      "derivation_values": {"net_profit": 8872670664578.0, "equity_end": 29013924943549.0, "equity_begin": 32000787431679.0},
+      "expected_answer": 29.083708893071204,
+      "expected_unit": "%",
+      "answer_tolerance": {"abs_tol": 1e-6, "rel_tol": 1e-6, "note": "placeholder pending BTC-published tolerance"}
+    },
+    "verification": {
+      "method": "manual_grid_read",
+      "note": "VNM_2022_separate|252 row18: 8.872.670.664.578. VNM_2022_separate|223 row14: same balance sheet table carries both 2022 (col3) and 2021 (col4) equity: 29.013.924.943.549 / 32.000.787.431.679.",
+      "assumptions": [
+        "Same average-equity ROE convention as id 2103.",
+        "'báo cáo công ty mẹ' in the question is read as requesting the separate (parent-only) statements, consistent with dev_v1's own established convention for this phrase."
+      ]
+    }
+  }
+]

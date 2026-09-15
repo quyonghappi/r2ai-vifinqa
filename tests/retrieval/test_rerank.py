@@ -1,7 +1,9 @@
 import json
 
 from retrieval.rerank import (
-    build_row_label_index, row_label_overlap_score, row_label_text_from_record,
+    boost_primary_statement_sections, build_row_label_index,
+    penalize_unrequested_related_party_notes, row_label_overlap_score,
+    row_label_text_from_record,
 )
 from retrieval.sparse import DEFAULT_STOPWORDS, tokenize
 
@@ -64,4 +66,30 @@ def test_row_label_overlap_score_ignores_large_unrelated_label_count():
 
 def test_row_label_overlap_score_empty_inputs():
     assert row_label_overlap_score(frozenset(), "Doanh thu thuần", DEFAULT_STOPWORDS) == 0.0
+
+
+def test_primary_statement_bonus_is_opt_in_and_keeps_notes_available():
+    ranked = [("note", 10.0), ("statement", 9.0)]
+    sections = {"note": "notes", "statement": "income_statement"}
+
+    assert boost_primary_statement_sections(ranked, sections, bonus=0.0) == ranked
+    assert boost_primary_statement_sections(ranked, sections, bonus=2.0) == [
+        ("statement", 11.0), ("note", 10.0),
+    ]
+
+
+def test_related_party_penalty_keeps_equivalent_notes_and_respects_question_scope():
+    ranked = [("partial_note", 10.0), ("equivalent_note", 9.0)]
+    sections = {"partial_note": "notes", "equivalent_note": "notes"}
+    identities = {
+        "partial_note": "30. Nghiệp vụ với các bên liên quan | notes",
+        "equivalent_note": "6.2 Trả trước cho người bán ngắn hạn | notes",
+    }
+
+    assert penalize_unrequested_related_party_notes(
+        ranked, sections, identities, "Trả trước cho người bán ngắn hạn là bao nhiêu?", penalty=2.0,
+    ) == [("equivalent_note", 9.0), ("partial_note", 8.0)]
+    assert penalize_unrequested_related_party_notes(
+        ranked, sections, identities, "Trả trước cho bên liên quan là bao nhiêu?", penalty=2.0,
+    ) == ranked
     assert row_label_overlap_score(frozenset({"doanh", "thu"}), "", DEFAULT_STOPWORDS) == 0.0

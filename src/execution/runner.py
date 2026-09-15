@@ -8,7 +8,10 @@ from typing import Callable
 
 from query_generation.generator import (
     build_evidence_frames,
+    compute_reductions,
+    detect_multi_year_extremum,
     generate_direct_lookup_plan,
+    generate_extremum_period_plan,
     generate_plan,
     render_pandas_query,
 )
@@ -58,14 +61,26 @@ def execute_with_repair(
         query = None
         stage = "generation_or_validation"
         try:
+            # A narrow, orthogonal refinement of the direct_lookup bucket, not a new top-level
+            # family: classify_query_family's own output is untouched (EXECUTION_ACCURACY_AUDIT.md
+            # §6.4 / query_generation.generator.detect_multi_year_extremum's docstring). Only
+            # applied when the classifier already said direct_lookup, so every other family's
+            # dispatch and every Phase-1 diagnostic keyed on query_family is unaffected.
+            extremum = (
+                detect_multi_year_extremum(linked.question)
+                if linked.query_family == "direct_lookup" else None
+            )
             plan = (
-                generate_direct_lookup_plan(linked, tables_by_key)
+                generate_extremum_period_plan(linked, tables_by_key, extremum)
+                if extremum is not None
+                else generate_direct_lookup_plan(linked, tables_by_key)
                 if linked.query_family == "direct_lookup"
-                else generate_plan(linked, complete, feedback)
+                else generate_plan(linked, tables_by_key, complete, feedback)
             )
             stage = "render"
             frames, variables = build_evidence_frames(plan, tables_by_key)
-            query = render_pandas_query(plan, variables)
+            reduction_values = compute_reductions(plan, tables_by_key) if plan.reductions else {}
+            query = render_pandas_query(plan, variables, reduction_values)
             stage = "execution"
             answer = execute_query(query, frames)
             attempts.append(ExecutionAttempt(

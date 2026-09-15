@@ -19,7 +19,7 @@ if str(_REPO_ROOT / "eval") not in sys.path:
 from common.table_store import load_tables_by_key
 from pipeline import answer_question
 from query_generation.generator import MODEL_ID, MODEL_REVISION, QwenAWQGenerator
-from retrieval.full_corpus import rank_questions
+from retrieval.full_corpus import load_company_by_ticker, rank_questions
 from retrieval.hybrid import fuse_ranking_artifacts
 try:
     # Kaggle snapshot layout: `eval` is pre-loaded as a proper package (pointing at the
@@ -122,6 +122,7 @@ def run(
     if pending:
         needed = {key for q in pending for key in retrieved[q["id"]]}
         tables = load_tables_by_key(structured_path, needed)
+        company_by_ticker = load_company_by_ticker(companies_path)
         generator = QwenAWQGenerator(str(model_path))
         completed = len(questions) - len(pending)
         failures = 0
@@ -134,7 +135,8 @@ def run(
             for q in pending:
                 try:
                     result = answer_question(
-                        q, retrieved[q["id"]], tables, generator, max_retries=max_retries
+                        q, retrieved[q["id"]], tables, generator, max_retries=max_retries,
+                        company_by_ticker=company_by_ticker,
                     )
                     frames = result.pop("evidence_frames")
                     if not result["executed"]:
@@ -145,7 +147,6 @@ def run(
                         frame.to_csv(evidence_dir / name, index=False)
                         evidence.append({"variable": variable, "csv_path": f"data/{name}"})
                     result["evidence"] = evidence
-                    result["relevant_tables"] = result["used_tables"]
                     _atomic_json(prediction_dir / f"{q['id']}.json", result)
                     completed += 1
                     failure_path = failure_dir / f"{q['id']}.json"

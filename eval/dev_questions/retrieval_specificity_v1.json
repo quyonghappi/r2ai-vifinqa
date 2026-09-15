@@ -1,0 +1,92 @@
+[
+  {
+    "id": 589,
+    "question": "Chênh lệch chi phí thuế TNDN giữa hai niên độ 2019 và 2016 của công ty mẹ CTCP Đầu tư Nam Long là bao nhiêu triệu đồng?",
+    "query_family": "comparison",
+    "search_tickers": ["NLG"],
+    "search_years": [2016, 2019],
+    "gold_tables": [
+      "NLG_financial_statements_2016_separate|246",
+      "NLG_financial_statements_2019_separate|268"
+    ],
+    "gold_n": 2,
+    "equivalent_tables": [
+      "NLG_financial_statements_2016_separate|1155",
+      "NLG_financial_statements_2019_separate|1169"
+    ],
+    "partial_tables": [],
+    "verification": [
+      "2016 separate income statement: row '15. Chỉ phí thuế TNDN hiện hành', period ending 31 December 2016.",
+      "2019 separate income statement: row '15. Chi phí thuế TNDN hiện hành', period ending 31 December 2019."
+    ]
+  },
+  {
+    "id": 845,
+    "question": "Lãi cơ bản trên cổ phiếu (EPS) lớn nhất của Tập đoàn Bảo Việt (BVH) qua các năm tài chính 2017, 2019, 2022 và 2024 là bao nhiêu nghìn đồng/cổ phiếu?",
+    "query_family": "direct_lookup",
+    "search_tickers": ["BVH"],
+    "search_years": [2017, 2019, 2022, 2024],
+    "gold_tables": [
+      "BVH_financial_statements_2017_consolidated|468",
+      "BVH_financial_statements_2019_consolidated|306",
+      "BVH_financial_statements_2022_consolidated|348",
+      "BVH_financial_statements_2024_consolidated|317"
+    ],
+    "gold_n": 4,
+    "equivalent_tables": [
+      "BVH_financial_statements_2017_consolidated|2400",
+      "BVH_financial_statements_2019_consolidated|2155",
+      "BVH_financial_statements_2022_consolidated|2255",
+      "BVH_financial_statements_2024_consolidated|2229"
+    ],
+    "partial_tables": [],
+    "verification": [
+      "2017 consolidated income statement: row 'Lãi cơ bản trên cổ phiếu', value 2,286 VND.",
+      "2019 consolidated income statement: row 'Lãi cơ bản trên cổ phiếu', value 1,689 VND.",
+      "2022 consolidated income statement: row 'Lãi cơ bản trên cổ phiếu', value 2,089 VND.",
+      "2024 consolidated income statement: row 'Lãi cơ bản trên cổ phiếu', value 2,843 VND."
+    ]
+  },
+  {
+    "id": 578,
+    "question": "Tổng số dư trả trước cho người bán ngắn hạn của công ty mẹ CTCP Nông nghiệp BAF Việt Nam cuối năm 2025 trừ đi mức cuối năm 2022 là bao nhiêu tỷ đồng?",
+    "query_family": "aggregation",
+    "search_tickers": ["BAF"],
+    "search_years": [2022, 2025],
+    "gold_tables": [
+      "BAF_financial_statements_2022_separate|242",
+      "BAF_financial_statements_2025_separate|240"
+    ],
+    "gold_n": 2,
+    "equivalent_tables": [
+      "BAF_financial_statements_2022_separate|763",
+      "BAF_financial_statements_2025_separate|821"
+    ],
+    "partial_tables": [
+      "BAF_financial_statements_2022_separate|1404",
+      "BAF_financial_statements_2025_separate|1843"
+    ],
+    "verification": [
+      "2022 separate balance sheet: row '2. Trả trước cho người bán ngắn hạn'.",
+      "2025 separate balance sheet: row '2. Trả trước cho người bán ngắn hạn'."
+    ]
+  },
+  {
+    "id": 629,
+    "question": "Tỷ lệ biến động số dư dự phòng phải thu ngắn hạn khó đòi giữa hai kỳ tài chính của công ty mẹ HBC giữa năm 2016 và năm 2020 là bao nhiêu %?",
+    "query_family": "ratio_or_derived",
+    "search_tickers": ["HBC"],
+    "search_years": [2016, 2020],
+    "gold_tables": [
+      "HBC_financial_statements_2016_separate|190",
+      "HBC_financial_statements_2020_separate|208"
+    ],
+    "gold_n": 2,
+    "equivalent_tables": [],
+    "partial_tables": [],
+    "verification": [
+      "2016 separate balance sheet: row '6. Dự phòng phải thu ngắn hạn khó đòi', closing balance (262,534,406,527) VND.",
+      "2020 separate balance sheet: row '6. Dự phòng phải thu ngắn hạn khó đòi', closing balance (384,655,311,583) VND."
+    ]
+  }
+]

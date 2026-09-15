@@ -7,6 +7,11 @@ from retrieval.full_corpus import (
 )
 
 
+def test_infer_question_years_expands_inclusive_reporting_ranges():
+    assert infer_question_years("Giai đoạn 2022-2024") == {2022, 2023, 2024}
+    assert infer_question_years("Từ 2022 đến 2024") == {2022, 2023, 2024}
+
+
 def test_full_rankings_are_scored_and_fingerprinted(tmp_path):
     catalog = tmp_path / "tables.csv"
     pd.DataFrame([{
@@ -103,6 +108,49 @@ def test_explicit_ticker_survives_unrelated_single_strong_name_match():
     }
     question = "Tong gia tri ghi so dau tu vao cong ty lien ket cua CTCP Tap Doan PC1 la bao nhieu"
     assert infer_question_tickers(question, companies) == {"PC1"}
+
+
+def test_all_strong_name_matches_returned_when_no_literal_ticker_exists():
+    # Confirmed defect (2026-09-01 diagnostic audit, real question id 539): 3 companies named
+    # only by full name, no literal tickers anywhere in the question. BSR and PLX tie at the
+    # max score; PVT independently clears the strong (>=3) threshold at a lower score and must
+    # not be silently dropped just because it isn't tied for the maximum.
+    companies = {
+        "BSR": "CTCP Loc hoa dau Binh Son",
+        "PLX": "Tap doan Xang dau Viet Nam",
+        "PVT": "Tong Cong ty co phan Van tai Dau khi",
+    }
+    question = "Trong so CTCP Loc hoa dau Binh Son, Tap doan Xang dau Viet Nam va Tong Cong ty co phan Van tai Dau khi, cong ty nao co no cao nhat"
+    resolved = infer_question_tickers(question, companies)
+    assert {"BSR", "PLX", "PVT"} <= resolved
+
+
+def test_ordered_company_phrases_reject_contained_generic_matches():
+    companies = {
+        "DIG": "Investment Development Construction",
+        "BID": "Investment Development Vietnam",
+        "SCR": "Saigon Thuong Tin Real Estate",
+        "SGB": "Saigon Thuong",
+    }
+    question = (
+        "Difference between Investment Development Construction and "
+        "Saigon Thuong Tin Real Estate"
+    )
+
+    assert infer_question_tickers(question, companies) == {"DIG", "SCR"}
+
+
+def test_ordered_company_phrases_add_full_name_companions_to_literal_tickers():
+    companies = {
+        "DPM": "Petro Fertilizer",
+        "GVR": "Rubber Group",
+        "DCM": "Mau Oil Fertilizer",
+        "HPG": "Hoa Phat",
+        "HT1": "Vicem Ha Tien",
+    }
+    question = "DPM, GVR, Mau Oil Fertilizer, Hoa Phat, and Vicem Ha Tien"
+
+    assert infer_question_tickers(question, companies) == {"DPM", "GVR", "DCM", "HPG", "HT1"}
 
 
 def test_nested_brand_name_still_overrides_literal_ticker():

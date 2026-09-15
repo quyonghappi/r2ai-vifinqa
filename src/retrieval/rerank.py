@@ -22,6 +22,7 @@ from retrieval.sparse import tokenize
 
 MAX_ROW_LABELS_FOR_RERANK = 200
 _ROW_LABEL_SEPARATOR = " | "
+PRIMARY_STATEMENT_SECTIONS = frozenset({"balance_sheet", "income_statement", "cash_flow"})
 
 
 def row_label_text_from_record(record: dict) -> str:
@@ -124,5 +125,57 @@ def rerank_with_row_labels(
         row_label_text = row_label_text_by_doc_id.get(doc_id, "")
         bonus = weight * row_label_overlap_score(question_tokens, row_label_text, stopwords)
         rescored.append((doc_id, score + bonus))
+    rescored.sort(key=lambda item: (-item[1], str(item[0])))
+    return rescored
+
+
+def boost_primary_statement_sections(
+    ranked: list[tuple], section_by_doc_id: dict[str, str], *, bonus: float,
+) -> list[tuple]:
+    """Optionally prefer primary financial statements over notes after lexical reranking.
+
+    The caller keeps this feature opt-in because note tables can be the only correct evidence for
+    a question. It is therefore an inspectable ranking feature to calibrate on manually verified
+    table-level evidence, never a hard filter.
+    """
+    if bonus <= 0:
+        return list(ranked)
+    boosted = [
+        (doc_id, score + (bonus if section_by_doc_id.get(str(doc_id)) in PRIMARY_STATEMENT_SECTIONS else 0.0))
+        for doc_id, score in ranked
+    ]
+    boosted.sort(key=lambda item: (-item[1], str(item[0])))
+    return boosted
+
+
+def penalize_unrequested_related_party_notes(
+    ranked: list[tuple],
+    section_by_doc_id: dict[str, str],
+    table_identity_by_doc_id: dict[str, str],
+    question: str,
+    *,
+    penalty: float,
+) -> list[tuple]:
+    """Demote a related-party note only when the question does not request that subset.
+
+    A disclosure headed ``các bên liên quan`` can repeat a requested line item's words while
+    reporting only the related-party component, rather than the full balance.  It is not a
+    general note penalty: ordinary explanatory notes (including the only source of a value) are
+    unchanged, and a question that explicitly asks for related-party information is unchanged.
+    """
+    if penalty <= 0 or "bên liên quan" in question.casefold():
+        return list(ranked)
+    rescored = [
+        (
+            doc_id,
+            score - (
+                penalty
+                if section_by_doc_id.get(str(doc_id)) == "notes"
+                and "bên liên quan" in table_identity_by_doc_id.get(str(doc_id), "").casefold()
+                else 0.0
+            ),
+        )
+        for doc_id, score in ranked
+    ]
     rescored.sort(key=lambda item: (-item[1], str(item[0])))
     return rescored
